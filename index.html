@@ -5,10 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>St. Margaret's Bay Website</title>
+    <title>St. Margaret's Bay Woodland Conservation Site</title>
+
+    <!-- CSS only -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <script src="./script/jquery-3.6.0.js"></script>
 
     <link rel="stylesheet" href="./style/style.css" />
-    <script src="./script/script.js" defer></script>
+    <script defer src="./script/script.js"></script>
+    <!-- JavaScript Bundle with Popper -->
   </head>
-  <body></body>
+  <body onload="getStarted()">
+    <!-- This part was designed by Mainuddin Alam Irteja-->
+    <section id="topBox">
+      <!--Header-->
+
+      <!--Header-->
+      <header class="container">
+        <a href="index.html" class="logo"
+          ><img
+            src="./pictures/logo.png"
+            alt="St. Margaret's Bay Area Woodland Conservation site"
+            id="logoId"
+        /></a>
+        <nav class="navBar">
+          <a href="index.html">About us</a>
+          <a href="./Markup/Conservation.html" id="conservTag"
+            >Conservation
+            <div class="dropdown-content" id="conservation">
+              <a href="./Markup/Flora.html">Flora</a>
+              <a href="./Markup/Fauna.html">Fauna</a>
+            </div>
+          </a>
+          <a href="#Activities.html" id="activeTag"
+            >Activites
+            <div class="dropdown-content" id="activities">
+              <a href="#">Biking Trail</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </a>
+          <a href="#map.html">Map</a>
+          <a href="#Contacts.html">Contact us</a>
+        </nav>
+      </header>
+      <h1>𝒮𝓉. 𝑀𝒶𝓇𝑔𝒶𝓇𝑒𝓉'𝓈 𝐵𝒶𝓎 𝒜𝓇𝑒𝒶 𝒲𝑜𝑜𝒹𝓁𝒶𝓃𝒹 𝒞𝑜𝓃𝓈𝑒𝓇𝓋𝒶𝓉𝒾𝑜𝓃 𝓈𝒾𝓉𝑒</h1>
+      <img
+        src="./pictures/forest_pic.jpg"
+        style="width: 100%"
+        class="naturePics"
+      />
+      <img
+        src="./pictures/hiking_pic.jpg"
+        style="width: 100%"
+        class="naturePics"
+      />
+      <img
+        src="./pictures/deer_pic.jpg"
+        style="width: 100%"
+        class="naturePics"
+      />
+
+      <a id="leftArrow" onclick="getPicture(-1)">&#10094;</a>
+      <a id="rightArrow" onclick="getPicture(1)">&#10095;</a>
+    </section>
+    <!-- Mainuddin Alam Irteja's part on the index page finishes here-->>
+  </body>
 </html>

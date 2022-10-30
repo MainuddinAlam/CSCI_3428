@@ -1,12 +1,217 @@
+<!-- 
+    create the index page for the French Village website
+
+    Authors: Agowun Muhammad Altaf (A00448118)
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>St. Margaret's Bay Website lorem</title>
-    <link rel="stylesheet" href="./style/style.css" />
-    <script src="./script/script.js" defer></script>
-  </head>
-  <body></body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>French Village</title>
+        <!-- Programmer defined default css -->
+        <link rel="stylesheet" href="./style/style.css" />
+        <!-- Programmer defined css for this page -->
+        <link rel="stylesheet" href="./style/index.css" />
+        <!-- jQuery library for DOM manipulation -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+        <!-- momentum scrolling -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.1/smooth-scrollbar.js"></script>
+        <!-- GSAP plugin for animation on scroll -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+        <!-- GSAP library for animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+
+        <!-- Programmer defined default scripts -->
+        <script src="./script/script.js" defer></script>
+        <!-- Programmer defined script for this page -->
+        <script src="./script/index.js" defer></script>
+    </head>
+    <body>
+        <!-- skip link to skip the navbar elements -->
+        <a class="skip_link" href="#main_content">Skip navbar</a>
+        <!-- navigation at the top -->
+        <nav>
+            <a href="./index.html" id="logo" title="homepage">French Village</a>
+            <ul>
+                <li><a href="./conservation.html">Conservations</a></li>
+                <li><a href="">Burials</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main id="main_content">
+            <!-- header section -->
+            <header>
+                <!-- main image for the header -->
+                <div id="img_container">
+                    <img src="./assets/jake-melara-Yh6K2eTr_FY-unsplash.jpg" />
+                    <img
+                        src="./assets/thomas-griesbeck-BS-Uxe8wU5Y-unsplash.jpg"
+                    />
+                    <img
+                        src="./assets/marita-kavelashvili-ugnrXk1129g-unsplash.jpg"
+                    />
+                </div>
+                <!-- description container  -->
+                <div id="description">
+                    <!-- Senior Trail -->
+                    <span class="text_content">
+                        <h2>Senior Trail</h2>
+                        <h3>Beautiful trail for all ages</h3>
+                        <p>
+                            French Village has trail designed to be accessible
+                            by people of all ages.
+                        </p>
+                    </span>
+
+                    <!-- Natural Burial -->
+                    <span class="text_content">
+                        <h2>Natural Burial</h2>
+                        <h3>Return to nature</h3>
+                        <p>
+                            The first natural burial area in Halifax, allowing
+                            you to burry your love ones in nature.
+                        </p>
+                    </span>
+
+                    <!-- Re-Wilding Area -->
+                    <span class="text_content">
+                        <h2>Re-Wilding Area</h2>
+                        <h3>Planting trees for the future</h3>
+                        <p>
+                            French Village is fill we with the most exquisite
+                            fauna and flora nature has to offer.
+                        </p>
+                    </span>
+
+                    <!-- indicator for the cainter text and header image -->
+                    <div id="slider_indicator">
+                        <!-- Senior Trail indicator button-->
+                        <button class="indicator_container">
+                            <div class="indicator"><div></div></div>
+                            <p>Senior Trail</p>
+                        </button>
+
+                        <!-- Natural Burial indicator button-->
+                        <button class="indicator_container">
+                            <div class="indicator"><div></div></div>
+                            <p>Natural Burials</p>
+                        </button>
+
+                        <!-- Re-Wilding Area indicator button-->
+                        <button class="indicator_container">
+                            <div class="indicator"><div></div></div>
+                            <p>Re-Wilding Area</p>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- welcome paragraph -->
+            <section id="introduction_sect">
+                <h1>Welcome to the French Village</h1>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Laudantium corrupti quidem autem nobis sint inventore
+                    doloribus totam. Ea perspiciatis ipsa dignissimos! Eveniet,
+                    ipsa corporis aliquid optio eum quos consectetur asperiores.
+                </p>
+
+                <!-- link to the about page -->
+                <a href="./about.html">Learn more about us</a>
+            </section>
+
+            <section id="gallery_sect">
+                <span class="sect_title">
+                    <h1>Fauna & Flora</h1>
+                    <p>Explore our beutiful fauna and flora.</p>
+                    <h5>Click on the images for more info</h5>
+                </span>
+                <!-- skip link to skip the gallery images -->
+                <a class="skip_link" href="#map_container">
+                    Skip fauna and flora gallery
+                </a>
+                <div id="gallery">
+                    <a href="">
+                        <img
+                            src="./assets/mariah-hewines-5WfxYaeJNdQ-unsplash.jpg"
+                        />
+                    </a>
+                    <a href="">
+                        <img
+                            src="./assets/mathew-schwartz-_Mu61HAvi2o-unsplash.jpg"
+                        />
+                    </a>
+                    <a href="">
+                        <img
+                            src="./assets/annie-spratt-ouVQwCBlQ9E-unsplash.jpg"
+                        />
+                    </a>
+                    <a id="explore_more" href="./conservation.html"
+                        >Explore More</a
+                    >
+                </div>
+            </section>
+
+            <!-- map section -->
+            <section id="map_sect">
+                <span class="sect_title">
+                    <h1>Find your way</h1>
+                    <p>
+                        Explore the places of interest around the interactive
+                        map below.
+                    </p>
+                    <h5>Click on the dots to get more information</h5>
+                </span>
+
+                <div id="map_container">
+                    <!-- skip link to skip the map markers -->
+                    <a class="skip_link" href="#footer">Skip map</a>
+                    <img
+                        onclick="toggleMarkerPanel(false)"
+                        id="map"
+                        src="./assets/satMap.png"
+                    />
+                    <svg
+                        width="2047"
+                        height="1247"
+                        version="1.1"
+                        viewBox="0 0 550 323"
+                        xml:space="preserve"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="m132.29 100.54 2.6328-3.7581 2.6782-0.5541-0.21934 4.2828 11.671 10.586 16.208 9.2351 4.0717 11.959 4.1937 15.054 9.7892 15.33 3.4796 0.0429 17.624 0.11396 0.63179 2.2673 4.5015 13.794-0.3248 2.3547-2.8538 15.866 11.994 4.1783 9.1723 0.84875 5.7818 15.183 19.354 2.2796v0l11.861 6.5361 9.306 6.6931 2.5914 5.0052 4.1015 17.688 21.088 9.0572 2.7001 4.285 23.608 2.722 3.7348-2.155-3.5847-7.4979"
+                            fill="none"
+                            stroke="#fff"
+                            opacity="0.3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1"
+                            id="path"
+                        />
+                    </svg>
+                    <button
+                        tabindex="-1"
+                        id="close_panel"
+                        onclick="toggleMarkerPanel(false)"
+                        title="Close Panel"
+                    >
+                        X
+                    </button>
+                    <div id="markers_panel"></div>
+                </div>
+            </section>
+            <footer id="footer"></footer>
+        </main>
+    </body>
 </html>

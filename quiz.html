@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Take the fun quiz</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style/quiz.css" />
+
+    <script src="./script/quiz.js" defer></script>
+  </head>
+
+  <body>
+    <!-- The part of the quiz -->
+    <div id="quizPart">
+      <!-- The header of the quiz page-->
+      <div id="header"><h1>Explore And Answer</h1></div>
+      <br />
+      <!-- The questions and options will go under this div -->
+      <div id="content" class="container borderColor cBorder"><br /></div>
+      <br />
+      <!-- The submission button-->
+      <div class="centerAllign">
+        <button onclick="showModal()">Submit Quiz</button>
+        <dialog id="modal">
+          <div class="modalHeader centerAllign">
+            <h2>Do you really want to submit?</h2>
+          </div>
+          <div>
+            <button id="submitBtn" class="dialogBtn" onclick="checkAnswers()">
+              Submit
+            </button>
+            <button class="dialogBtn" onclick="closeModal()">Cancel</button>
+          </div>
+        </dialog>
+      </div>
+    </div>
+
+    <!-- The results part of the page-->
+    <div id="results" style="display: none">
+      <br />
+      <div id="marks" class="borderColor cBorder"></div>
+      <br />
+      <div class="centerAllign">
+        <button id="returnBtn" onclick="window.location.reload()">
+          Return To Quiz
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

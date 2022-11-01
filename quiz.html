@@ -1,53 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Take the fun quiz</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Take the fun quiz</title>
+        <!-- jQuery library for DOM manipulation -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+        <!-- momentum scrolling -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.1/smooth-scrollbar.js"></script>
+        <!-- GSAP plugin for animation on scroll -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+        <!-- GSAP library for animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+        <link rel="stylesheet" href="./style/style.css" />
+        <link rel="stylesheet" href="./style/quiz.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="./style/quiz.css" />
+        <script src="./script/script.js" defer></script>
+        <script src="./script/quiz.js" defer></script>
+    </head>
 
-    <script src="./script/quiz.js" defer></script>
-  </head>
+    <body>
+        <!-- skip link to skip the navbar elements -->
+        <a class="skip_link" href="#main_content">Skip navbar</a>
+        <!-- navigation at the top -->
+        <nav>
+            <a href="./index.html" id="logo" title="homepage">French Village</a>
+            <ul>
+                <li><a href="./conservation.html">Conservations</a></li>
+                <li><a href="">Burials</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </nav>
+        <main>
+            <!-- The part of the quiz -->
+            <div id="quizPart">
+                <!-- The header of the quiz page-->
+                <div id="header"><h1>Explore And Answer</h1></div>
+                <br />
+                <!-- The questions and options will go under this div -->
+                <div id="content" class="container borderColor cBorder">
+                    <br />
+                </div>
+                <br />
+                <!-- The submission button-->
+                <div class="centerAllign">
+                    <button onclick="showModal()">Submit Quiz</button>
+                    <dialog id="modal">
+                        <div class="modalHeader centerAllign">
+                            <h2>Do you really want to submit?</h2>
+                        </div>
+                        <div>
+                            <button
+                                id="submitBtn"
+                                class="dialogBtn"
+                                onclick="checkAnswers()"
+                            >
+                                Submit
+                            </button>
+                            <button class="dialogBtn" onclick="closeModal()">
+                                Cancel
+                            </button>
+                        </div>
+                    </dialog>
+                </div>
+            </div>
 
-  <body>
-    <!-- The part of the quiz -->
-    <div id="quizPart">
-      <!-- The header of the quiz page-->
-      <div id="header"><h1>Explore And Answer</h1></div>
-      <br />
-      <!-- The questions and options will go under this div -->
-      <div id="content" class="container borderColor cBorder"><br /></div>
-      <br />
-      <!-- The submission button-->
-      <div class="centerAllign">
-        <button onclick="showModal()">Submit Quiz</button>
-        <dialog id="modal">
-          <div class="modalHeader centerAllign">
-            <h2>Do you really want to submit?</h2>
-          </div>
-          <div>
-            <button id="submitBtn" class="dialogBtn" onclick="checkAnswers()">
-              Submit
-            </button>
-            <button class="dialogBtn" onclick="closeModal()">Cancel</button>
-          </div>
-        </dialog>
-      </div>
-    </div>
-
-    <!-- The results part of the page-->
-    <div id="results" style="display: none">
-      <br />
-      <div id="marks" class="borderColor cBorder"></div>
-      <br />
-      <div class="centerAllign">
-        <button id="returnBtn" onclick="window.location.reload()">
-          Return To Quiz
-        </button>
-      </div>
-    </div>
-  </body>
+            <!-- The results part of the page-->
+            <div id="results" style="display: none">
+                <br />
+                <div id="marks" class="borderColor cBorder"></div>
+                <br />
+                <div class="centerAllign">
+                    <button id="returnBtn" onclick="window.location.reload()">
+                        Return To Quiz
+                    </button>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>

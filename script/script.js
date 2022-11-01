@@ -43,11 +43,9 @@ function enableSmoothScroll() {
         bodyScrollBar.addListener((status) => {
             // get the scroll position on scroll
             const scrollY = status.offset.y;
-            // scroll distance for which the bar will not be hidden
-            const navVisibleDistance = headerImgContainer.offsetHeight - 200;
 
             // check if it greater than the last scroll position
-            if (scrollY < navVisibleDistance || scrollY <= scrollPosition) {
+            if (scrollY <= scrollPosition) {
                 // show nav bar
                 navbar.style.transform = "translateY(0)";
             } else {
@@ -65,10 +63,10 @@ function enableSmoothScroll() {
             // get the scroll position on scroll
             const scrollY = window.scrollY;
             // scroll distance for which the bar will not be hidden
-            const navVisibleDistance = headerImgContainer.offsetHeight - 200;
+            const navVisibleDistance = 200;
 
             // check if it greater than the last scroll position
-            if (scrollY < navVisibleDistance || scrollY <= scrollPosition) {
+            if (scrollY <= scrollPosition) {
                 // show nav bar
                 navbar.style.transform = "translateY(0)";
             } else {
@@ -84,8 +82,3 @@ function enableSmoothScroll() {
 
 // enable smooth scrolling
 enableSmoothScroll();
-
-// monitor window resizing to re enable smooth scrolling or disable it
-window.addEventListener("resize", () => {
-    enableSmoothScroll();
-});

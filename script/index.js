@@ -409,19 +409,19 @@ function plotMarkersAndPath(locationsInfo) {
     markers = mapContainer.querySelectorAll(".markers");
 
     animatePathAndMarkers();
-
-    // replot the location markers if the window is resized
-    window.addEventListener("resize", () => {
-        // remove existing location markers
-        markers.forEach((el) => el.remove());
-
-        // replot location markers
-        plotMarkersAndPath(locationsInfo);
-    });
 }
 
 // wait for the map image to be loaded before adding the location markers
 map.addEventListener("load", () => {
+    plotMarkersAndPath(locationsInfo);
+});
+
+// replot the location markers if the window is resized
+window.addEventListener("resize", () => {
+    // remove existing location markers
+    markers.forEach((el) => el.remove());
+
+    // replot location markers
     plotMarkersAndPath(locationsInfo);
 });
 

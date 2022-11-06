@@ -14,7 +14,7 @@
 
         h1 {
             text-align: center;
-            font-size: 5em;
+            font-size: 6vw;
             text-transform: uppercase;
             padding-bottom: 0.5em;
         }
@@ -145,6 +145,14 @@
 
 // tablet size responsiveness
 @media only screen and (max-width: 768px) {
+    #header {
+        min-height: 50vh;
+        div {
+            h1 {
+                font-size: 8vw;
+            }
+        }
+    }
     #quizPart {
         padding: 1em;
     }
@@ -152,15 +160,6 @@
 
 // smartphone size responsiveness
 @media only screen and (max-width: 640px) {
-    #header {
-        min-height: 50vh;
-        div {
-            h1 {
-                font-size: 2em;
-            }
-        }
-    }
-
     #results {
         #marks {
             font-size: 2em;

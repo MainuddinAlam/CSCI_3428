@@ -4,6 +4,9 @@ gsap.registerPlugin(ScrollTrigger);
 // reference to DOM element
 const navbar = document.querySelector("nav");
 const main = document.querySelector("main");
+const menu = navbar.querySelector("#menu");
+const menuLinks = navbar.querySelector("ul");
+const menuText = menu.querySelector("p");
 
 // constant
 // tablet width
@@ -12,6 +15,8 @@ const TABLET_WIDTH = 768;
 // variable
 // keep track of previous scroll position
 let scrollPosition = 0;
+
+let isMenuOpen = false;
 
 let bodyScrollBar;
 
@@ -45,7 +50,7 @@ function enableSmoothScroll() {
             const scrollY = status.offset.y;
 
             // check if it greater than the last scroll position
-            if (scrollY <= scrollPosition) {
+            if (scrollY <= scrollPosition || isMenuOpen) {
                 // show nav bar
                 navbar.style.transform = "translateY(0)";
             } else {
@@ -66,7 +71,7 @@ function enableSmoothScroll() {
             const navVisibleDistance = 200;
 
             // check if it greater than the last scroll position
-            if (scrollY <= scrollPosition) {
+            if (scrollY <= scrollPosition || isMenuOpen) {
                 // show nav bar
                 navbar.style.transform = "translateY(0)";
             } else {
@@ -82,3 +87,38 @@ function enableSmoothScroll() {
 
 // enable smooth scrolling
 enableSmoothScroll();
+
+menu.addEventListener("click", () => {
+    menuToggle();
+});
+
+function menuToggle() {
+    // toggle expanding the navabr when on mobile
+    isMenuOpen = !isMenuOpen;
+
+    // animate the transition of the text in the expand menu button
+    gsap.timeline()
+        .to(menuText, {
+            translateY: isMenuOpen ? "120%" : "-120%",
+            duration: 0.3,
+            ease: Circ.easeIn,
+        })
+        .set(menuText, {
+            translateY: isMenuOpen ? "-120%" : "120%",
+        })
+        .call(() => (menuText.innerText = isMenuOpen ? "Close" : "Menu"))
+        .to(menuText, {
+            translateY: 0,
+            duration: 0.3,
+            ease: Circ.easeOut,
+        });
+
+    // animate the list of links visibility
+    gsap.timeline().to(menuLinks, {
+        clipPath: isMenuOpen
+            ? "polygon(0 0, 100% 0%, 100% 100%, 0% 100%)"
+            : "polygon(0 0, 100% 0%, 100% 0%, 0% 0%)",
+        duration: 0.6,
+        ease: Circ.easeInOut,
+    });
+}

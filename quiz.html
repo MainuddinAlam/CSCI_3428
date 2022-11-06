@@ -17,6 +17,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
         <!-- GSAP library for animations -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
         <link rel="stylesheet" href="./style/style.css" />
         <link rel="stylesheet" href="./style/quiz.css" />
 
@@ -30,6 +33,7 @@
         <!-- navigation at the top -->
         <nav>
             <a href="./index.html" id="logo" title="homepage">French Village</a>
+            <button id="menu"><p>Menu</p></button>
             <ul>
                 <li><a href="./conservation.html">Conservations</a></li>
                 <li><a href="">Burials</a></li>
@@ -37,50 +41,49 @@
                 <li><a href="">Contact</a></li>
             </ul>
         </nav>
-        <main>
+        <main id="main_content">
             <!-- The part of the quiz -->
             <div id="quizPart">
                 <!-- The header of the quiz page-->
-                <div id="header"><h1>Explore And Answer</h1></div>
-                <br />
+                <div id="header">
+                    <div id="headerContent">
+                        <h1>Explore And Answer</h1>
+                        <p>
+                            Get to know the interesting facts and history of the
+                            French Village Conservation through a short and fun
+                            quiz.
+                        </p>
+                    </div>
+                </div>
                 <!-- The questions and options will go under this div -->
-                <div id="content" class="container borderColor cBorder">
-                    <br />
-                </div>
-                <br />
-                <!-- The submission button-->
-                <div class="centerAllign">
-                    <button onclick="showModal()">Submit Quiz</button>
-                    <dialog id="modal">
-                        <div class="modalHeader centerAllign">
-                            <h2>Do you really want to submit?</h2>
-                        </div>
-                        <div>
-                            <button
-                                id="submitBtn"
-                                class="dialogBtn"
-                                onclick="checkAnswers()"
-                            >
-                                Submit
-                            </button>
-                            <button class="dialogBtn" onclick="closeModal()">
-                                Cancel
-                            </button>
-                        </div>
-                    </dialog>
-                </div>
+                <div id="content"></div>
+
+                <button onclick="showModal()">Submit Quiz</button>
+                <dialog id="modal">
+                    <h2>Do you really want to submit?</h2>
+
+                    <span>
+                        <button class="dialogBtn" onclick="closeModal()">
+                            Cancel
+                        </button>
+                        <button
+                            id="submitBtn"
+                            class="dialogBtn"
+                            onclick="checkAnswers()"
+                        >
+                            Submit
+                        </button>
+                    </span>
+                </dialog>
             </div>
 
             <!-- The results part of the page-->
             <div id="results" style="display: none">
-                <br />
-                <div id="marks" class="borderColor cBorder"></div>
-                <br />
-                <div class="centerAllign">
-                    <button id="returnBtn" onclick="window.location.reload()">
-                        Return To Quiz
-                    </button>
-                </div>
+                <div id="marks"></div>
+
+                <button id="returnBtn" onclick="window.location.reload()">
+                    Return To Quiz
+                </button>
             </div>
         </main>
     </body>

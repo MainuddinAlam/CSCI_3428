@@ -574,14 +574,12 @@ function toggleMarkerPanel(display) {
     });
 
     // animate the close button in or out
-    // TODO: uncomment code after demo
-    // // check if user wants to see the marker
-    // if (display) {
-    //     // ensure marker starts from hidden then is revealed
-    //     gsap.set(markersPanelCloseBtn, {
-    //         clipPath: "circle(0% at 50% 50%)",
-    //     });
-    // }
+    if (display) {
+        // ensure marker starts from hidden then is revealed
+        gsap.set(markersPanelCloseBtn, {
+            clipPath: "circle(0% at 50% 50%)",
+        });
+    }
     gsap.to(markersPanelCloseBtn, {
         clipPath: display ? "circle(40% at 50% 50%)" : "circle(0% at 50% 50%)",
         duration: 0.5,

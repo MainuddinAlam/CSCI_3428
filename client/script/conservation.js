@@ -307,13 +307,17 @@ function openMoreInfoPanel(data) {
 
     // add the new imagess
     data.imgsURL.forEach((img) => {
+        // create the smaller image preview
         const smallImg = document.createElement("img");
+        // set the image of the smaller preview
         smallImg.src = img;
 
+        // change the main image with the image the user clicks on
         smallImg.addEventListener("click", () => {
             moreInfoPanelImage.src = img;
         });
 
+        // add the small images to the other image preview bar
         moreInfoPanelOtherImg.appendChild(smallImg);
     });
 

@@ -4,6 +4,7 @@ const server = express();
 const port = 3026;
 
 const speciesRouter = require("./Routes/species");
+const quizRouter = require("./Routes/quiz");
 
 let head = "mongodb://";
 let user = "group23E";
@@ -39,6 +40,9 @@ try {
 
     // listen to request to /species
     server.use("/species", speciesRouter);
+
+    // listen to request to /species
+    server.use("/quiz", quizRouter);
 
     // start listening
     server.listen(port, function () {

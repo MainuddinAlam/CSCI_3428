@@ -217,6 +217,7 @@ header #description #slider_indicator .indicator_container .indicator div {
 #map_sect {
   width: 100%;
   --markers_width: 1.25em;
+  padding-bottom: 64px;
 }
 #map_sect #map_container {
   margin: 1em auto;

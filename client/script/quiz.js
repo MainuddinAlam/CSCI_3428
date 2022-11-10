@@ -53,6 +53,9 @@ const marks = document.getElementById("marks");
 // reference to the header part
 const header = document.getElementById("header");
 
+// enable footer reveal animation for this page
+enableFooterReveal();
+
 /**
  * The purpose of this function is to display all the multiple choice
  *  questions.

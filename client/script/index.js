@@ -49,6 +49,12 @@ const mapContainer = document.querySelector("#map_container");
 const map = mapContainer.querySelector("#map");
 // reference to the markers panel
 const markersPanel = mapContainer.querySelector("#markers_panel");
+// reference to the markers panel' image
+const image = markersPanel.querySelector("img");
+// reference to the markers panel' header
+const title = markersPanel.querySelector("h1");
+// reference to the markers panel' text
+const description = markersPanel.querySelector("p");
 // reference to the markers panel contents
 const markersPanelCloseBtn = mapContainer.querySelector("#close_panel");
 // reference to the map path
@@ -154,6 +160,9 @@ let indicatorInterval;
 
 // fix issue with indicator animation lagging behind when user reenters website
 gsap.ticker.lagSmoothing(false);
+
+// enable footer reveal animation for this page
+enableFooterReveal();
 
 /**
  * The purpose of this function is to animate the header content to the desired
@@ -523,26 +532,14 @@ function toggleLocationLabel(markerLabel, display) {
 }
 
 /**
- * The purpose of this function is to change the content of the marker panel
- *
- * It first removes all the content inside the markers panel and then create
- * an image, h1 and p element to hold the image, title and description for that
- * loaction. Finally it appends the element created.
+ * The purpose of this function is to change the content of the marker panel.
+ * It update the src for the image to the new image, change the header and the
+ * paragraph.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  * @param locationInfo information on the markers location
  */
 function upadateMarkerPanel(locationInfo) {
-    // clear the content of the panel
-    markersPanel.innerHTML = "";
-
-    // create an element for the image of the marker content
-    const image = document.createElement("img");
-    // create an element for the image of the marker content
-    const title = document.createElement("h1");
-    // create an element for the image of the marker content
-    const description = document.createElement("p");
-
     // set the image for the marker content
     image.src = locationInfo.imgUrl;
 
@@ -551,9 +548,6 @@ function upadateMarkerPanel(locationInfo) {
 
     // set the text for the description
     description.textContent = locationInfo.description;
-
-    // add the image, title and description to the panel
-    markersPanel.append(image, title, description);
 }
 
 /**

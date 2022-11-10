@@ -7,10 +7,17 @@ const main = document.querySelector("main");
 const menu = navbar.querySelector("#menu");
 const menuLinks = navbar.querySelector("ul");
 const menuText = menu.querySelector("p");
+const footer = document.querySelector("#footer");
+const footerWrapper = footer.querySelector("#footerWrapper");
 
 // constant
+// server url
+const SERVER_URL = "http://140.184.230.209:3026";
+
 // tablet width
 const TABLET_WIDTH = 768;
+// mobile width
+const MOBILE_WIDTH = 640;
 
 // variable
 // keep track of previous scroll position
@@ -120,5 +127,17 @@ function menuToggle() {
             : "polygon(0 0, 100% 0%, 100% 0%, 0% 0%)",
         duration: 0.6,
         ease: Circ.easeInOut,
+    });
+}
+
+function enableFooterReveal() {
+    gsap.from(footerWrapper, {
+        translateY: "-30%",
+        scrollTrigger: {
+            trigger: footer,
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: true,
+        },
     });
 }

@@ -66,7 +66,7 @@ router.post("/getSpecies/:category/:index", async (req, res) => {
         .sort({ createdAt: -1 }) // sort them in descending order from when they were inserted into the database
         .skip(Number(index) * PAGINATION_NUM) // skip the first documents (Pagination)
         .limit(PAGINATION_NUM) // limit the number of documents being sent (Pagination)
-        .select({ name: 1, imgsURL: 1 }); // only send the required data
+        .select({ name: 1, imgsURL: 1, description: 1 }); // only send the required data
 
     return res.status(200).send(speciesList);
 });

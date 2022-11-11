@@ -125,12 +125,14 @@ header {
         padding: 1em;
         aspect-ratio: 1/1;
         border-radius: 0.5rem;
+        cursor: pointer;
     }
 
     .currentIndex {
         background-color: var(--bg-color);
         color: var(--primary-color);
         font-weight: bold;
+        pointer-events: none;
     }
 }
 
@@ -144,21 +146,39 @@ header {
     overflow: hidden;
     display: none;
     background-color: rgba($color: #000000, $alpha: 0.3);
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     opacity: 0;
 
     #moreInfoPanel {
         background-color: var(--bg-color);
-        border-radius: 1rem;
+        border-radius: 1rem 1rem 0 0;
         padding: 1em;
-        width: 90%;
-        max-height: 90vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        scale: 0.8;
+        width: 100%;
+        height: 90vh;
         position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .scroll-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        #moreInfoCloseBtn {
+            position: fixed;
+            top: 0;
+            right: 0;
+            margin: 1rem;
+            padding: 1rem;
+            border: none;
+            line-height: 100%;
+            font-size: large;
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+            cursor: pointer;
+        }
 
         h1 {
             text-align: center;
@@ -173,7 +193,6 @@ header {
         }
 
         #otherImgs {
-            position: absolute;
             left: 0;
             bottom: 0;
             width: 100%;
@@ -187,12 +206,15 @@ header {
                 margin: 0.5em;
                 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             }
-
-            .activeImg {
-                border: var(--primary-color);
-            }
+        }
+        a {
+            color: var(--primary-color);
         }
     }
+}
+
+.activeImg {
+    border: 2px solid var(--primary-color);
 }
 
 // tablet size responsiveness
@@ -207,7 +229,7 @@ header {
     }
 
     #gallery {
-        padding: 0 1em;
+        padding: 0;
         .columns {
             padding: 0 1em;
             gap: 1em;

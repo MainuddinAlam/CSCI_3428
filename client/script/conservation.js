@@ -14,6 +14,8 @@ const moreInfoPanelH1 = moreInfoPanel.querySelector("h1");
 const moreInfoPanelImage = moreInfoPanel.querySelector("#mainImg");
 // reference to the more information panel's other image bar
 const moreInfoPanelOtherImg = moreInfoPanel.querySelector("#otherImgs");
+// reference to the more information panel's description
+const moreInfoPanelDescription = moreInfoPanel.querySelector("#description");
 
 // current category default to flora since it is going to be changed on load
 let category = "flora";
@@ -56,21 +58,23 @@ function createPaginationBar(speciesLength, paginationNum) {
         // set the text of the page index button
         pageIndexBtn.textContent = pageIndex + 1;
 
-        // style the current index button and add onclick to the other button
+        // add the current index styling on load
         if (pageIndex == speciesIndex) {
             pageIndexBtn.classList.add("currentIndex");
-        } else {
-            // listen to the user clicking on the page index button
-            pageIndexBtn.addEventListener("click", () => {
-                pageIndexBar.childNodes.forEach((button) =>
-                    button.classList.remove("currentIndex")
-                );
-
-                // fetch the new data
-                fetchSpeciesData(pageIndex);
-                pageIndexBtn.classList.add("currentIndex");
-            });
         }
+
+        // listen to the user clicking on the page index button
+        pageIndexBtn.addEventListener("click", () => {
+            // remove the current index styling on the current button
+            pageIndexBar.childNodes.forEach((button) =>
+                button.classList.remove("currentIndex")
+            );
+
+            // fetch the new data
+            fetchSpeciesData(pageIndex);
+            // add the current index styling to the new button
+            pageIndexBtn.classList.add("currentIndex");
+        });
 
         // add the buttons to the page index bar
         pageIndexBar.appendChild(pageIndexBtn);
@@ -289,6 +293,11 @@ window.addEventListener("resize", () => {
     appendColumns();
 });
 
+Scrollbar.init(moreInfoPanel, {
+    damping: 0.1,
+    syncCallbacks: true,
+});
+
 /**
  * display a panel for more information on the specices
  *
@@ -301,19 +310,35 @@ function openMoreInfoPanel(data) {
     moreInfoPanelH1.textContent = data.name;
     // update the main image
     moreInfoPanelImage.src = data.imgsURL[0];
+    // set the description for that species
+    moreInfoPanelDescription.innerText = data.description;
 
     // clear the previous images
     moreInfoPanelOtherImg.innerHTML = "";
 
     // add the new imagess
-    data.imgsURL.forEach((img) => {
+    data.imgsURL.forEach((img, i) => {
         // create the smaller image preview
         const smallImg = document.createElement("img");
         // set the image of the smaller preview
         smallImg.src = img;
 
+        // add the active image class to the first image
+        if (i == 0) {
+            smallImg.classList.add("activeImg");
+        }
+
         // change the main image with the image the user clicks on
         smallImg.addEventListener("click", () => {
+            // remove the hidden on the previous image
+            moreInfoPanelOtherImg
+                .querySelectorAll("img")
+                .forEach((smallImg) => {
+                    smallImg.classList.remove("activeImg");
+                });
+
+            smallImg.classList.add("activeImg");
+
             moreInfoPanelImage.src = img;
         });
 
@@ -325,16 +350,22 @@ function openMoreInfoPanel(data) {
     gsap.set(moreInfoBackground, { display: "flex" });
 
     // animate the the more information panel background in
-    gsap.to(moreInfoBackground, {
-        opacity: 1,
-        duration: 0.3,
-    });
-
-    // animate the the more information panel in
-    gsap.to(moreInfoPanel, {
-        scale: 1,
-        duration: 0.3,
-    });
+    gsap.timeline()
+        .to(moreInfoBackground, {
+            opacity: 1,
+            duration: 0.3,
+            ease: Circ.EaseInOut,
+        }) // animate the the more information panel in
+        .fromTo(
+            moreInfoPanel,
+            { height: 0, duration: 0 },
+            {
+                height: "90vh",
+                duration: 0.4,
+                ease: Circ.EaseOut,
+            },
+            "-=30%"
+        );
 }
 
 /**
@@ -342,25 +373,27 @@ function openMoreInfoPanel(data) {
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  */
-function closeMoreOnfoPanel() {
+function closeMoreInfoPanel() {
     gsap.timeline()
-        .to(moreInfoBackground, {
-            opacity: 0,
-            duration: 0.3,
+        .to(moreInfoPanel, {
+            height: 0,
+            duration: 0.4,
+            ease: Circ.EaseIn,
         })
         .to(
-            moreInfoPanel,
+            moreInfoBackground,
             {
-                scale: 0.8,
+                opacity: 0,
                 duration: 0.3,
+                ease: Circ.EaseInOut,
             },
-            "-=100%"
+            "-=30%"
         )
         .set(moreInfoBackground, { display: "none" });
 }
 
 // add the close on click of the more information panel background
-moreInfoBackground.addEventListener("click", () => closeMoreOnfoPanel());
+moreInfoBackground.addEventListener("click", () => closeMoreInfoPanel());
 
 // do not close the more information panel if user clicks on the panel itself
 moreInfoPanel.addEventListener("click", (event) => {

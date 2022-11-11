@@ -27,19 +27,19 @@ let isMenuOpen = false;
 
 let bodyScrollBar;
 
-function enableSmoothScroll() {
+function enableSmoothScroll(element) {
     // check if user is on mobile to disable smooth scrolling
     if (window.innerWidth > TABLET_WIDTH) {
         // remove any smooth scrollbar instance before
         Scrollbar.destroyAll();
         // Setup
-        bodyScrollBar = Scrollbar.init(main, {
+        bodyScrollBar = Scrollbar.init(element, {
             damping: 0.1,
             delegateTo: document,
             syncCallbacks: true,
         });
 
-        ScrollTrigger.scrollerProxy(main, {
+        ScrollTrigger.scrollerProxy(element, {
             scrollTop(value) {
                 if (arguments.length) {
                     bodyScrollBar.scrollTop = value;
@@ -50,7 +50,7 @@ function enableSmoothScroll() {
 
         bodyScrollBar.addListener(ScrollTrigger.update);
 
-        ScrollTrigger.defaults({ scroller: main });
+        ScrollTrigger.defaults({ scroller: element });
 
         bodyScrollBar.addListener((status) => {
             // get the scroll position on scroll
@@ -74,8 +74,6 @@ function enableSmoothScroll() {
         document.addEventListener("scroll", (e) => {
             // get the scroll position on scroll
             const scrollY = window.scrollY;
-            // scroll distance for which the bar will not be hidden
-            const navVisibleDistance = 200;
 
             // check if it greater than the last scroll position
             if (scrollY <= scrollPosition || isMenuOpen) {
@@ -93,7 +91,7 @@ function enableSmoothScroll() {
 }
 
 // enable smooth scrolling
-enableSmoothScroll();
+enableSmoothScroll(main);
 
 menu.addEventListener("click", () => {
     menuToggle();

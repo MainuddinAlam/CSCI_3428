@@ -124,9 +124,3 @@ async function uploadContent() {
         }, 500);
     }
 }
-
-function getList() {
-    $.get(SERVER_URL + "/species/list", (req, res) => {
-        console.log("List:", res);
-    }).fail(() => alert("could not get species"));
-}

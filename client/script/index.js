@@ -60,95 +60,101 @@ const markersPanelCloseBtn = mapContainer.querySelector("#close_panel");
 // reference to the map path
 const path = mapContainer.querySelector("#path");
 
-// get the markers information from server (TEMPORARILY HARD CODED)
-const locationsInfo = [
-    {
-        x: 500,
-        y: 386,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Trailhead",
-    },
-    {
-        x: 640,
-        y: 500,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Hazelnut tree",
-    },
-    {
-        x: 706,
-        y: 615,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Big Apple Tree",
-    },
-    {
-        x: 775,
-        y: 624,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Pear Tree",
-    },
-    {
-        x: 790,
-        y: 685,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Cherry-Honeysuckle Arch",
-    },
-    {
-        x: 780,
-        y: 745,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Spruce Grove",
-    },
-    {
-        x: 860,
-        y: 764,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Foundation",
-    },
-    {
-        x: 955,
-        y: 830,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Open Honeysuckle, sweet cherry",
-    },
+// get the markers information from server (TEMPORARILY HARD CODED) TODO: REMOVE
+// const locationsInfo = [
+//     {
+//         x: 500,
+//         y: 386,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Trailhead",
+//     },
+//     {
+//         x: 640,
+//         y: 500,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Hazelnut tree",
+//     },
+//     {
+//         x: 706,
+//         y: 615,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Big Apple Tree",
+//     },
+//     {
+//         x: 775,
+//         y: 624,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Pear Tree",
+//     },
+//     {
+//         x: 790,
+//         y: 685,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Cherry-Honeysuckle Arch",
+//     },
+//     {
+//         x: 780,
+//         y: 745,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Spruce Grove",
+//     },
+//     {
+//         x: 860,
+//         y: 764,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Foundation",
+//     },
+//     {
+//         x: 955,
+//         y: 830,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Open Honeysuckle, sweet cherry",
+//     },
 
-    {
-        x: 1035,
-        y: 880,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Enter Big Grove",
-    },
-    {
-        x: 1010,
-        y: 950,
-        description: "Description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Well",
-    },
-    {
-        x: 1140,
-        y: 1000,
-        description: "description of the image",
-        imgUrl: "./assets/satMap.png",
-        title: "Very Big Apple Tree",
-    },
-    {
-        x: 1240,
-        y: 990,
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga, provident voluptas quas pariatur laboriosam porro atque excepturi fugit dicta",
-        imgUrl: "./assets/satMap.png",
-        title: "End of trail",
-    },
-];
+//     {
+//         x: 1035,
+//         y: 880,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Enter Big Grove",
+//     },
+//     {
+//         x: 1010,
+//         y: 950,
+//         description: "Description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Well",
+//     },
+//     {
+//         x: 1140,
+//         y: 1000,
+//         description: "description of the image",
+//         imgUrl: "./assets/satMap.png",
+//         title: "Very Big Apple Tree",
+//     },
+//     {
+//         x: 1240,
+//         y: 990,
+//         description:
+//             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga, provident voluptas quas pariatur laboriosam porro atque excepturi fugit dicta",
+//         imgUrl: "./assets/satMap.png",
+//         title: "End of trail",
+//     },
+// ];
+
+// get a promise for the location info
+const locationsInfo = $.get({
+    url: SERVER_URL + "/map/getMarkers",
+    async: true,
+});
 
 // variables
 // reference to the markers (will be programmatically added)
@@ -160,9 +166,6 @@ let indicatorInterval;
 
 // fix issue with indicator animation lagging behind when user reenters website
 gsap.ticker.lagSmoothing(false);
-
-// enable footer reveal animation for this page
-enableFooterReveal();
 
 /**
  * The purpose of this function is to animate the header content to the desired
@@ -421,17 +424,17 @@ function plotMarkersAndPath(locationsInfo) {
 }
 
 // wait for the map image to be loaded before adding the location markers
-map.addEventListener("load", () => {
-    plotMarkersAndPath(locationsInfo);
+map.addEventListener("load", async () => {
+    plotMarkersAndPath(await locationsInfo);
 });
 
 // replot the location markers if the window is resized
-window.addEventListener("resize", () => {
+window.addEventListener("resize", async () => {
     // remove existing location markers
     markers.forEach((el) => el.remove());
 
     // replot location markers
-    plotMarkersAndPath(locationsInfo);
+    plotMarkersAndPath(await locationsInfo);
 });
 
 /**

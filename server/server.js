@@ -4,7 +4,9 @@ const server = express();
 const port = 3026;
 
 const speciesRouter = require("./Routes/species");
+const contactsRouter = require("./Routes/contacts");
 const quizRouter = require("./Routes/quiz");
+const mapRouter = require("./Routes/map");
 
 let head = "mongodb://";
 let user = "group23E";
@@ -12,7 +14,7 @@ let password = "41AustriaLeaderThin";
 let localHost = "127.0.0.1";
 let localPort = "27017";
 let database = "group23E";
-let connectionString = `${head}${user}:${password}@${localHost}:${localPort}/${user}`;
+let connectionString = `${head}${user}:${password}@${localHost}:${localPort}/${database}`;
 
 // code provided by Prof Terry
 // set JSON recognition
@@ -37,6 +39,9 @@ server.use(allowCrossDomain);
 try {
     mongoose.connect(connectionString);
     // connection succesful
+
+    // listen to request to /map
+    server.use("/map", mapRouter);
 
     // listen to request to /species
     server.use("/species", speciesRouter);

@@ -7,8 +7,6 @@ const main = document.querySelector("main");
 const menu = navbar.querySelector("#menu");
 const menuLinks = navbar.querySelector("ul");
 const menuText = menu.querySelector("p");
-const footer = document.querySelector("#footer");
-const footerWrapper = footer.querySelector("#footerWrapper");
 
 // constant
 // server url
@@ -125,17 +123,5 @@ function menuToggle() {
             : "polygon(0 0, 100% 0%, 100% 0%, 0% 0%)",
         duration: 0.6,
         ease: Circ.easeInOut,
-    });
-}
-
-function enableFooterReveal() {
-    gsap.from(footerWrapper, {
-        translateY: "-30%",
-        scrollTrigger: {
-            trigger: footer,
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: true,
-        },
     });
 }

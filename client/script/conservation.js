@@ -190,9 +190,6 @@ function populateColumns(pageContent) {
                 // add the class for styling image wrapper
                 imgWrapper.classList.add("imgWrapper");
 
-                // // set the url to get more information for the species
-                // imgWrapper.href = `./speciesInfo.html?speciesId=${species._id}`;
-
                 imgWrapper.addEventListener("click", () => {
                     openMoreInfoPanel(species);
                 });
@@ -217,28 +214,27 @@ function populateColumns(pageContent) {
                 // append the images to the columns
                 columns[i % numColumns].append(speciesContainer);
 
-                // add parallax effect to the images
-                gsap.fromTo(
-                    speciesImg,
-                    {
-                        translateY: "-10%",
-                    },
-                    {
-                        scrollTrigger: {
-                            trigger: imgWrapper,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: true,
-                        },
-                        translateY: "10%",
-                    }
-                );
-
                 // set the species container to the initial state for animation
                 gsap.set(speciesContainer, { opacity: 0, scale: 0.8 });
 
                 // when the image is loaded then animate the container in
                 speciesImg.onload = () => {
+                    // add parallax effect to the images
+                    gsap.fromTo(
+                        speciesImg,
+                        {
+                            translateY: "-10%",
+                        },
+                        {
+                            scrollTrigger: {
+                                trigger: imgWrapper,
+                                start: "top bottom",
+                                end: "bottom top",
+                                scrub: true,
+                            },
+                            translateY: "10%",
+                        }
+                    );
                     gsap.to(speciesContainer, {
                         opacity: 1,
                         scale: 1,

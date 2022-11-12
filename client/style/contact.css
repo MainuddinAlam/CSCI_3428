@@ -1,0 +1,107 @@
+body {
+  width: 100%;
+  background-color: #f7f8fc;
+}
+h2 {
+  padding: 1%;
+}
+#contactPage {
+  display: flex;
+  height: 100vh;
+}
+
+#contactForm {
+  width: 40%;
+  background-color: #f7f8fc;
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #ffff92, #80ff80);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+  rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  margin-right: 0.5%;
+}
+
+#generalContact {
+  width: 60%;
+  text-align: center;
+}
+
+#responseContent {
+  background-image: linear-gradient(to bottom right, #ffff92, #80ff80);
+  max-width: 75%;
+  margin: auto;
+  height: 100vh;
+  padding: 5%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#responseContent p {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+input {
+  width: 60%;
+  border-width: medium;
+
+  border-image: linear-gradient(45deg, #12ff12, #00a400) 1;
+}
+
+textarea {
+  width: 60%;
+  border-width: medium;
+
+  border-image: linear-gradient(45deg, #12ff12, #00a400) 1;
+}
+svg {
+  width: 4%;
+  height: 4%;
+}
+h1 {
+  font-size: 400%;
+  padding: 2%;
+}
+
+h1 + p {
+  margin-bottom: 4%;
+}
+p {
+  font-size: larger;
+  text-align: center;
+}
+
+.submitBtn{
+  font-weight: bold;
+  width: 60%;
+  padding: 1%;
+  cursor: pointer;
+  border: none;
+  /* background-image: linear-gradient(to bottom right, #ffff92, #80ff80); */
+  background-color: yellow;
+}
+.submitBtn:hover, button:hover {
+  background-color: bisque;
+}
+.submitBtn:active, button:active {
+  transform: translateY(2px);
+}
+
+.svgTags {
+  padding: 1%;
+}
+
+.socialMedia {
+  margin-right: 1%;
+}
+
+button {
+  margin-top: 2%;
+  font-weight: bold;
+  width:20%;
+  padding: 1%;
+  cursor: pointer;
+  border: none;
+  background-color: yellow;
+  border-radius: 1%;
+}

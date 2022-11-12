@@ -41,7 +41,10 @@ try {
     // listen to request to /species
     server.use("/species", speciesRouter);
 
-    // listen to request to /species
+    // listen to request to /contacts
+    server.use("/contacts", contactsRouter);
+
+    // listen to request to /quiz
     server.use("/quiz", quizRouter);
 
     // start listening

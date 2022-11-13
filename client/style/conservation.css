@@ -217,9 +217,4 @@ header div p {
     padding: 0 1em;
     gap: 1em;
   }
-}
-@media only screen and (max-width: 640px) {
-  #results #marks {
-    font-size: 2em;
-  }
 }/*# sourceMappingURL=conservation.css.map */

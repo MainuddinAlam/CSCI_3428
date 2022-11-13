@@ -4,6 +4,7 @@ const server = express();
 const port = 3026;
 
 const speciesRouter = require("./Routes/species");
+const storeRouter = require("./Routes/store");
 const contactsRouter = require("./Routes/contacts");
 const quizRouter = require("./Routes/quiz");
 const mapRouter = require("./Routes/map");
@@ -45,6 +46,9 @@ try {
 
     // listen to request to /species
     server.use("/species", speciesRouter);
+
+    // listen to request to /store
+    server.use("/store", storeRouter);
 
     // listen to request to /contacts
     server.use("/contacts", contactsRouter);

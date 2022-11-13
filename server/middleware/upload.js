@@ -1,15 +1,24 @@
 const multer = require("multer");
 
-// code adapted from documentation https://github.com/expressjs/multer
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "./assets/species/");
-    },
-    filename: function (req, file, cb) {
-        cb(null, new Date().toISOString() + file.originalname);
-    },
-});
+/**
+ * save image to ./asset
+ *
+ * code adapted from documentation https://github.com/expressjs/multer
+ * Author: Agowun Muhammad Altaf (A00448118)
+ * @param subdoc sub document path
+ * @returns multer upload function
+ */
+function upload(subdoc) {
+    const storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, `./assets/${subdoc}/`);
+        },
+        filename: function (req, file, cb) {
+            cb(null, new Date().toISOString() + file.originalname);
+        },
+    });
 
-const upload = multer({ storage: storage });
+    return multer({ storage: storage });
+}
 
 module.exports = upload;

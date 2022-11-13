@@ -346,7 +346,8 @@ galleryImgs.forEach((image, i) => {
  * Author: Agowun Muhammad Altaf (A00448118)
  * @param locationsInfo array of information on the markers
  */
-function plotMarkersAndPath(locationsInfo) {
+async function plotMarkersAndPath(locationsInfo) {
+    locationsInfo = await locationsInfo;
     // loops through the location array
     locationsInfo.forEach((location) => {
         // adapt x and y coordinates of the location JSON to be that of the map
@@ -423,10 +424,15 @@ function plotMarkersAndPath(locationsInfo) {
     animatePathAndMarkers();
 }
 
-// wait for the map image to be loaded before adding the location markers
-map.addEventListener("load", async () => {
-    plotMarkersAndPath(await locationsInfo);
-});
+// check if image is already loaded
+if (map.complete) {
+    plotMarkersAndPath(locationsInfo);
+} else {
+    // wait for the map image to be loaded before adding the location markers
+    map.onload = async () => {
+        plotMarkersAndPath(locationsInfo);
+    };
+}
 
 // replot the location markers if the window is resized
 window.addEventListener("resize", async () => {
@@ -434,7 +440,7 @@ window.addEventListener("resize", async () => {
     markers.forEach((el) => el.remove());
 
     // replot location markers
-    plotMarkersAndPath(await locationsInfo);
+    plotMarkersAndPath(locationsInfo);
 });
 
 /**

@@ -7,7 +7,7 @@ const upload = require("../middleware/upload");
 const PAGINATION_NUM = 6;
 
 // upload the images for the species
-router.post("/uploadImg", upload.single("image"), (req, res) => {
+router.post("/uploadImg", upload("species").single("image"), (req, res) => {
     res.send(req.file);
 });
 

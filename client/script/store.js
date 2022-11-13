@@ -14,13 +14,29 @@ const moreInfoPanelOtherImg = moreInfoPanel.querySelector("#otherImgs");
 const moreInfoPanelDescription = moreInfoPanel.querySelector("#description");
 // reference to the more information panel's price
 const moreInfoPanelPrice = moreInfoPanel.querySelector("#price");
+// reference to the more information panel's item quantity
+const moreInfoPanelQuantity = moreInfoPanel.querySelector("#itemQuantity");
 // reference to the more information panel's add to cart button
 const moreInfoPanelAddtoCart = moreInfoPanel.querySelector("#addToCart");
+// reference to the cart button
+const cartBtn = document.querySelector("#cartBtn");
+// reference to the cart modal
+const cart = document.querySelector("#cart");
+// reference to the cart modal
+const cartClose = cart.querySelector("#closeCart");
+// reference to the cart modal
+const cartPurchase = cart.querySelector("#purcahse");
+// reference to the cart items list
+const cartItemList = cart.querySelector("#cartItems");
+// reference to the cart items total price
+const cartTotalPrice = cart.querySelector("#totalPrice");
 
 // store the items id to be use in the cart page
-const cartItems = [];
-// stoer the id of the item being viewed
-let itemId = JSON.parse(sessionStorage.getItem("cart")) || [];
+const cartItems = {};
+// store the list of items
+let items;
+// store the id of the item being viewed
+let itemId;
 
 /**
  * get the items to be displayed
@@ -30,6 +46,7 @@ let itemId = JSON.parse(sessionStorage.getItem("cart")) || [];
 function fetchItemsData() {
     // fetch the items data
     $.post(`${SERVER_URL}/store/getitems`, (data) => {
+        items = data;
         // add the content of the columns
         populateColumns(data);
     });
@@ -53,7 +70,6 @@ function populateColumns(items) {
         .to(store.querySelectorAll(".itemContainer"), {
             opacity: 0,
             scale: 0.8,
-            stagger: 0.1,
         })
         .call(() => {
             // remove current images
@@ -201,6 +217,8 @@ function openMoreInfoPanel(data) {
     moreInfoPanelDescription.innerText = data.description;
     // set the price for that item
     moreInfoPanelPrice.innerText = `Price: $${Number(data.price).toFixed(2)}`;
+    // set the quantity for that item
+    moreInfoPanelQuantity.innerText = `x ${cartItems[itemId] || 0}`;
 
     // clear the previous images
     moreInfoPanelOtherImg.innerHTML = "";
@@ -264,11 +282,30 @@ function openMoreInfoPanel(data) {
  */
 function addItemToCart() {
     if (itemId.length != 0) {
-        cartItems.push(itemId);
-        sessionStorage.setItem("cart", JSON.stringify(cartItems));
+        cartItems[itemId] =
+            cartItems[itemId] == null ? 1 : Number(cartItems[itemId]) + 1;
+        // set the quantity for that item
+        moreInfoPanelQuantity.innerText = `x ${cartItems[itemId] || 0}`;
     }
+}
 
-    console.log(sessionStorage.getItem("cart"));
+/**
+ * remove 1 item to both cartItem array and session storage
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ */
+function decrementItemInCart() {
+    if (itemId.length != 0) {
+        cartItems[itemId] =
+            cartItems[itemId] == null ? 0 : Number(cartItems[itemId]) - 1;
+
+        if (cartItems[itemId] < 0) {
+            cartItems[itemId] = 0;
+        }
+
+        // set the quantity for that item
+        moreInfoPanelQuantity.innerText = `x ${cartItems[itemId] || 0}`;
+    }
 }
 
 /**
@@ -303,3 +340,83 @@ moreInfoPanel.addEventListener("click", (event) => {
     // stop the panel from closing
     event.stopPropagation();
 });
+
+// open the cart modal
+cartBtn.addEventListener("click", () => {
+    updateCart();
+    cart.showModal();
+});
+
+function updateCart() {
+    let cartEmpty = true;
+    cartItemList.innerHTML = "";
+    for (const [itemID, quantity] of Object.entries(cartItems)) {
+        if (quantity != 0) {
+            cartEmpty = false;
+            const item = items.find((el) => el._id == itemID);
+            const row = document.createElement("li");
+            const itemName = document.createElement("p");
+            itemName.innerText = item.name;
+
+            const itemManagement = document.createElement("div");
+            itemManagement.classList.add("itemManagement");
+
+            const itemQuantity = document.createElement("input");
+            itemQuantity.type = "number";
+            itemQuantity.min = 0;
+            itemQuantity.max = 10;
+            itemQuantity.value = Number(quantity);
+
+            const itemTotalPrice = document.createElement("p");
+            itemTotalPrice.innerText = `$${(
+                item.price * Number(quantity)
+            ).toFixed(2)}`;
+
+            itemQuantity.onchange = () => {
+                newValue = itemQuantity.value < 0 ? 0 : itemQuantity.value;
+                cartItems[itemID] = newValue;
+
+                itemTotalPrice.innerText = `$${(item.price * newValue).toFixed(
+                    2
+                )}`;
+
+                updateTotalPrice();
+            };
+
+            itemManagement.append(itemQuantity, itemTotalPrice);
+
+            row.append(itemName, itemManagement);
+            cartItemList.append(row);
+        }
+    }
+
+    if (cartEmpty) {
+        cartItemList.innerText = "Cart is empty";
+    } else {
+        updateTotalPrice();
+    }
+}
+
+// clase the cart modal
+cartClose.addEventListener("click", () => {
+    cart.close();
+});
+
+// purchase items
+cartPurchase.addEventListener("click", () => {
+    if (confirm("Purcahse items")) {
+        location.reload();
+    }
+});
+
+function updateTotalPrice() {
+    let totalPrice = 0;
+
+    for (const [itemID, quantity] of Object.entries(cartItems)) {
+        const item = items.find((el) => el._id == itemID);
+        totalPrice += Number(item.price) * Number(quantity);
+    }
+
+    cartTotalPrice.innerHTML =
+        totalPrice == 0 ? "" : `Total price: $${totalPrice.toFixed(2)}`;
+}

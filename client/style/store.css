@@ -67,29 +67,86 @@ header div p {
   width: 100%;
   scale: 1.2;
 }
-#store .columns .itemContainer figcaption {
-  padding: 0.5em 2em;
-  margin-bottom: 1em;
+#store .columns .itemContainer p {
+  padding-top: 0.5rem;
   font-size: large;
   font-weight: bold;
   text-align: center;
 }
 
-#cart {
+#cartBtn {
   z-index: 10;
   position: fixed;
   bottom: 0;
   right: 0;
   margin: 2em;
-  border: none;
   aspect-ratio: 1/1;
   border-radius: 50%;
+  border: none;
   padding: 1em;
   align-items: center;
   justify-content: center;
   display: flex;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.11);
   cursor: pointer;
+  background-color: var(--bg-color);
+}
+#cartBtn img {
+  width: 2.5em;
+}
+
+#cart {
+  background-color: var(--bg-color);
+  margin: auto;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  min-width: 40%;
+}
+#cart ul {
+  padding: 0.5em 0;
+}
+#cart ul li {
+  padding: 0.1em 0;
+  display: flex;
+  justify-content: space-between;
+}
+#cart ul li .itemManagement {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  display: flex;
+  margin-left: 3em;
+}
+#cart ul li .itemManagement input {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin-right: 1em;
+}
+#cart #totalPrice {
+  width: 100%;
+  text-align: right;
+}
+#cart span {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 1em;
+}
+#cart span button {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 0.75em 1.5em;
+  font-size: medium;
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
+}
+#cart span button:nth-child(1) {
+  background-color: transparent;
+  color: black;
 }
 
 #moreInfoBackground {
@@ -114,6 +171,9 @@ header div p {
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #moreInfoBackground #moreInfoPanel .scroll-content {
   display: flex;
@@ -122,19 +182,19 @@ header div p {
   width: 100%;
 }
 #moreInfoBackground #moreInfoPanel #moreInfoCloseBtn {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   margin: 1rem;
   padding: 1rem;
   border: none;
   font-size: large;
-  border-radius: 50%;
   aspect-ratio: 1/1;
   cursor: pointer;
   align-items: center;
   justify-content: center;
   display: flex;
+  background-color: transparent;
 }
 #moreInfoBackground #moreInfoPanel h1 {
   text-align: center;
@@ -161,7 +221,42 @@ header div p {
   margin: 0.5em;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-#moreInfoBackground #moreInfoPanel #addToCart {
+#moreInfoBackground #moreInfoPanel p {
+  padding: 0.1rem;
+}
+#moreInfoBackground #moreInfoPanel span {
+  display: flex;
+  align-items: center;
+}
+#moreInfoBackground #moreInfoPanel span #decrementItemQuantity {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.5em 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  font-size: large;
+  font-weight: bold;
+  border: none;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+#moreInfoBackground #moreInfoPanel span #itemQuantity {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.5em 1em;
+  background-color: var(--lightGrey);
+  border-radius: 0.5rem;
+  font-size: large;
+}
+#moreInfoBackground #moreInfoPanel span #addToCart {
   background-color: var(--primary-color);
   font-size: large;
   padding: 0.5em 1em;

@@ -94,7 +94,7 @@
                 </div>
             </footer>
         </main>
-        <button id="cart" title="view cart">
+        <button id="cartBtn" title="view cart">
             <img src="./assets/cart_Icon.svg" alt="cart" />
         </button>
         <div id="moreInfoBackground">
@@ -104,17 +104,37 @@
                     title="close"
                     onclick="closeMoreInfoPanel()"
                 >
-                    X
+                    Close
                 </button>
                 <h1></h1>
                 <img id="mainImg" src="" />
                 <div id="otherImgs"></div>
                 <p id="description"></p>
                 <p id="price"></p>
-                <button id="addToCart" onclick="addItemToCart()">
-                    Add to Cart
-                </button>
+                <span>
+                    <button
+                        title="remove 1 item"
+                        id="decrementItemQuantity"
+                        onclick="decrementItemInCart()"
+                    >
+                        -
+                    </button>
+                    <p id="itemQuantity">0</p>
+                    <button id="addToCart" onclick="addItemToCart()">
+                        Add to Cart
+                    </button>
+                </span>
             </div>
         </div>
+
+        <dialog id="cart">
+            <h1>Cart</h1>
+            <ul id="cartItems"></ul>
+            <p id="totalPrice"></p>
+            <span>
+                <button id="closeCart">Close</button>
+                <button id="purcahse">Purchase</button>
+            </span>
+        </dialog>
     </body>
 </html>

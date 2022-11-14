@@ -26,12 +26,16 @@ const marks = document.getElementById("marks");
 // reference to the header part
 const header = document.getElementById("header");
 
+//global variable to store the quiz info
+let quizInfo;
+
 //get request to retrieve the quiz information from the database
-$.get(`${SERVER_URL}/quiz/getQuiz`, (returnQuizInfo) => {
-  // Call the method to add all the MCQs
-  displayAllMCQ(returnQuizInfo);
+$.get(`${SERVER_URL}/quiz/getQuiz`, (returnData) => {
+    quizInfo = returnData;
+    // Call the method to add all the MCQs
+    displayAllMCQ(quizInfo);
 }).fail((err) => {
-  console.log(err.responeText);
+    console.log(err.responeText);
 });
 
 /**
@@ -53,48 +57,48 @@ $.get(`${SERVER_URL}/quiz/getQuiz`, (returnQuizInfo) => {
  * @param {*} questionsInfo the JSON object containing the quiz information
  */
 function displayAllMCQ(questionsInfo) {
-  // Randomize the object and loop through the questions
-  questionsInfo.sort((a, b) => 0.5 - Math.random());
-  questionsInfo.forEach((questionInfo, qNum) => {
-    // shift the qNum so that it starts from 1
-    qNum++;
+    // Randomize the object and loop through the questions
+    questionsInfo.sort((a, b) => 0.5 - Math.random());
+    questionsInfo.forEach((questionInfo, qNum) => {
+        // shift the qNum so that it starts from 1
+        qNum++;
 
-    // Creating the legend tag
-    const legend = document.createElement("legend");
+        // Creating the legend tag
+        const legend = document.createElement("legend");
 
-    // Create a span tag
-    const spanTag = document.createElement("span");
+        // Create a span tag
+        const spanTag = document.createElement("span");
 
-    // Creating a fieldset tag and setting its id
-    const fSet = document.createElement("fieldset");
-    fSet.id = `question${qNum}`;
+        // Creating a fieldset tag and setting its id
+        const fSet = document.createElement("fieldset");
+        fSet.id = `question${qNum}`;
 
-    // Setting the innerText of the legend with the multiple choice question
-    legend.innerText = `${qNum}. ${questionInfo.question}`;
+        // Setting the innerText of the legend with the multiple choice question
+        legend.innerText = `${qNum}. ${questionInfo.question}`;
 
-    // Add the question to the fieldset
-    fSet.appendChild(legend);
+        // Add the question to the fieldset
+        fSet.appendChild(legend);
 
-    // Add the method to create all the options for a question
-    // Include the corresponding options of the question, fieldset and
-    // question number as parameters
-    createOptions(questionInfo.options, fSet, qNum);
+        // Add the method to create all the options for a question
+        // Include the corresponding options of the question, fieldset and
+        // question number as parameters
+        createOptions(questionInfo.options, fSet, qNum);
 
-    // Set the innerText and id of the span element
-    // The innerText of the span element contains a tick mark
-    // This is used to indicate to the user that option was saved when
-    // he checks a radio button
-    spanTag.innerHTML = "Saved";
-    spanTag.id = `tMark${qNum}`;
-    // Setting span tag to hidden by default
-    spanTag.style.display = "none";
+        // Set the innerText and id of the span element
+        // The innerText of the span element contains a tick mark
+        // This is used to indicate to the user that option was saved when
+        // he checks a radio button
+        spanTag.innerHTML = "Saved";
+        spanTag.id = `tMark${qNum}`;
+        // Setting span tag to hidden by default
+        spanTag.style.display = "none";
 
-    // Add the spanTag mark to the fieldset
-    legend.append(spanTag);
+        // Add the spanTag mark to the fieldset
+        legend.append(spanTag);
 
-    // Add the fieldset element to the contentsDiv
-    contentsDiv.appendChild(fSet);
-  });
+        // Add the fieldset element to the contentsDiv
+        contentsDiv.appendChild(fSet);
+    });
 }
 
 /**
@@ -115,51 +119,51 @@ function displayAllMCQ(questionsInfo) {
  * @param {*} questionNum The question number
  */
 function createOptions(optionsList, fSet, questionNum) {
-  // Randomize the options by shuffling
-  optionsList.sort((a, b) => 0.5 - Math.random());
-  optionsList.forEach((option) => {
-    // Creating div tag which will contain one radio button
-    const optionsDiv = document.createElement("div");
-    // Creating the input tag
-    const radioBtn = document.createElement("input");
-    // Label the radio button
-    const labelTag = document.createElement("label");
+    // Randomize the options by shuffling
+    optionsList.sort((a, b) => 0.5 - Math.random());
+    optionsList.forEach((option) => {
+        // Creating div tag which will contain one radio button
+        const optionsDiv = document.createElement("div");
+        // Creating the input tag
+        const radioBtn = document.createElement("input");
+        // Label the radio button
+        const labelTag = document.createElement("label");
 
-    // Variable used to get the particular span element
-    let check;
+        // Variable used to get the particular span element
+        let check;
 
-    // Set attributes to the input tag
-    radioBtn.type = "radio";
-    radioBtn.name = "Options" + questionNum;
-    radioBtn.value = option;
-    radioBtn.id = option;
+        // Set attributes to the input tag
+        radioBtn.type = "radio";
+        radioBtn.name = "Options" + questionNum;
+        radioBtn.value = option;
+        radioBtn.id = option;
 
-    // Make the radio buttons functional
-    // Display the saved message and tick mark to the user when a
-    // particular option is chosen
-    radioBtn.onclick = function () {
-      // Get the particular span element id
-      check = document.getElementById(`tMark${questionNum}`);
+        // Make the radio buttons functional
+        // Display the saved message and tick mark to the user when a
+        // particular option is chosen
+        radioBtn.onclick = function () {
+            // Get the particular span element id
+            check = document.getElementById(`tMark${questionNum}`);
 
-      // It is needed when user tries to change options of an mcq
-      check.style.display = "none";
+            // It is needed when user tries to change options of an mcq
+            check.style.display = "none";
 
-      // Wait for 500 ms and display the saved message and the tick mark
-      setTimeout(() => {
-        check.style.display = "";
-      }, 500);
-    };
+            // Wait for 500 ms and display the saved message and the tick mark
+            setTimeout(() => {
+                check.style.display = "";
+            }, 500);
+        };
 
-    // Set attributes of the label tag of the radio button
-    labelTag.htmlFor = option;
-    labelTag.innerHTML = option;
+        // Set attributes of the label tag of the radio button
+        labelTag.htmlFor = option;
+        labelTag.innerHTML = option;
 
-    // Add an option to the div
-    optionsDiv.append(radioBtn, labelTag);
+        // Add an option to the div
+        optionsDiv.append(radioBtn, labelTag);
 
-    // Add the div containing the option to the required fieldset
-    fSet.append(optionsDiv);
-  });
+        // Add the div containing the option to the required fieldset
+        fSet.append(optionsDiv);
+    });
 }
 
 /**
@@ -175,7 +179,7 @@ function createOptions(optionsList, fSet, questionNum) {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function showModal() {
-  modal.showModal();
+    modal.showModal();
 }
 
 /**
@@ -191,7 +195,7 @@ function showModal() {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function closeModal() {
-  modal.close();
+    modal.close();
 }
 
 /**
@@ -209,28 +213,28 @@ function closeModal() {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function checkAnswers() {
-  // Creating counter to track correct answers
-  let correctAnswers = 0;
-  for (let i = 0; i < quizInfo.length; i++) {
-    // Get the name of the radio buttons of a particular mcq
-    let radios = document.getElementsByName(`Options${i + 1}`);
-    // Loop through the radio buttons
-    for (const radio of radios) {
-      // Check if an option is selected
-      if (radio.checked) {
-        // Check if answer matches
-        if (radio.value == quizInfo[i].answer) {
-          correctAnswers++;
+    // Creating counter to track correct answers
+    let correctAnswers = 0;
+    for (let i = 0; i < quizInfo.length; i++) {
+        // Get the name of the radio buttons of a particular mcq
+        let radios = document.getElementsByName(`Options${i + 1}`);
+        // Loop through the radio buttons
+        for (const radio of radios) {
+            // Check if an option is selected
+            if (radio.checked) {
+                // Check if answer matches
+                if (radio.value == quizInfo[i].answer) {
+                    correctAnswers++;
+                }
+            }
         }
-      }
     }
-  }
 
-  // Display the results to the user
-  displayResults(correctAnswers);
+    // Display the results to the user
+    displayResults(correctAnswers);
 
-  //We close the modal for good pratice
-  closeModal();
+    //We close the modal for good pratice
+    closeModal();
 }
 
 /**
@@ -245,21 +249,21 @@ function checkAnswers() {
  * @param {*} correctAns The number of correct answers
  */
 function displayResults(correctAns) {
-  //Calculate quiz percentage
-  let percentage = (correctAns / quizInfo.length) * 100;
+    //Calculate quiz percentage
+    let percentage = (correctAns / quizInfo.length) * 100;
 
-  //Hid the quiz div and display the results div
-  quizDiv.style.display = "none";
-  resultsDiv.style.display = "";
+    //Hid the quiz div and display the results div
+    quizDiv.style.display = "none";
+    resultsDiv.style.display = "";
 
-  //Add the percentage to the div
-  marks.innerHTML = "You scored: " + percentage.toFixed(2) + "%";
+    //Add the percentage to the div
+    marks.innerHTML = "You scored: " + percentage.toFixed(2) + "%";
 
-  const jsConfetti = new JSConfetti();
+    const jsConfetti = new JSConfetti();
 
-  jsConfetti.addConfetti({
-    emojis: ["🍁", "🍏", "🍎", "🍀", "☘️"],
-    emojiSize: 30,
-    confettiNumber: Math.round(percentage) * 3,
-  });
+    jsConfetti.addConfetti({
+        emojis: ["🍁", "🍏", "🍎", "🍀", "☘️"],
+        emojiSize: 30,
+        confettiNumber: Math.round(percentage) * 3,
+    });
 }

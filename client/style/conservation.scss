@@ -185,11 +185,16 @@ header {
             font-size: 5vw;
         }
 
-        #mainImg {
-            max-width: 100%;
-            max-height: 70vh;
-            object-fit: cover;
+        #mainImgWrapper {
             border-radius: 1rem;
+            overflow: hidden;
+            #mainImg {
+                position: relative;
+                border-radius: 1rem;
+                max-width: 100%;
+                max-height: 70vh;
+                object-fit: cover;
+            }
         }
 
         #otherImgs {
@@ -198,6 +203,7 @@ header {
             width: 100%;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
 
             img {
                 max-height: 100px;
@@ -220,7 +226,7 @@ header {
 // tablet size responsiveness
 @media only screen and (max-width: 768px) {
     header {
-        min-height: 50vh;
+        min-height: 40vh;
         div {
             h1 {
                 font-size: 8vw;

@@ -49,7 +49,7 @@ header div p {
 
 @media only screen and (max-width: 768px) {
   header {
-    min-height: 50vh;
+    min-height: 40vh;
   }
   header div h1 {
     font-size: 8vw;

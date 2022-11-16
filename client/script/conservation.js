@@ -10,6 +10,9 @@ const moreInfoBackground = document.querySelector("#moreInfoBackground");
 const moreInfoPanel = moreInfoBackground.querySelector("#moreInfoPanel");
 // reference to the more information panel's header
 const moreInfoPanelH1 = moreInfoPanel.querySelector("h1");
+// reference to the more information panel's image wrapper
+const moreInfoPanelImageWrapper =
+    moreInfoPanel.querySelector("#mainImgWrapper");
 // reference to the more information panel's image
 const moreInfoPanelImage = moreInfoPanel.querySelector("#mainImg");
 // reference to the more information panel's other image bar
@@ -362,6 +365,51 @@ function openMoreInfoPanel(data) {
             },
             "-=30%"
         );
+}
+
+if (window.innerWidth > MOBILE_WIDTH) {
+    // zoom into image on hover
+    moreInfoPanelImageWrapper.addEventListener("mouseover", () => {
+        gsap.to(moreInfoPanelImage, {
+            scale: 2,
+            duration: 0,
+        });
+    });
+
+    // zoom out of image on hover
+    moreInfoPanelImageWrapper.addEventListener("mouseleave", () => {
+        gsap.to(moreInfoPanelImage, {
+            top: 0,
+            left: 0,
+        });
+        gsap.to(moreInfoPanelImage, {
+            scale: 1,
+        });
+    });
+
+    // move image to where user is hovering
+    moreInfoPanelImageWrapper.addEventListener("mousemove", (event) => {
+        // x position of mouse relative to main image wrapper
+        const relativeX =
+            (event.clientX -
+                moreInfoPanelImageWrapper.getBoundingClientRect().x -
+                moreInfoPanelImageWrapper.clientWidth / 2) /
+            moreInfoPanelImageWrapper.clientWidth;
+        // y position of mouse relative to main image wrapper
+        const relativeY =
+            (event.clientY -
+                moreInfoPanelImageWrapper.getBoundingClientRect().y -
+                moreInfoPanelImageWrapper.clientHeight / 2) /
+            moreInfoPanelImageWrapper.clientHeight;
+
+        moreInfoPanelImage.style.left = `${
+            moreInfoPanelImageWrapper.clientWidth * -relativeX
+        }px`;
+
+        moreInfoPanelImage.style.top = `${
+            moreInfoPanelImageWrapper.clientHeight * -relativeY
+        }px`;
+    });
 }
 
 /**

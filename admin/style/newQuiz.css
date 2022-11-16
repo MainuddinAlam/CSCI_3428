@@ -9,61 +9,57 @@ Author: Mainuddin Alam Irteja (A00446752)
 Styles using html elements
 */
 body {
-  width: 100%;
-  background-color: #f7f8fc;
+    width: 100%;
+    background-color: #f7f8fc;
 }
 h1 {
-  padding: 1%;
+    padding: 1%;
 }
 section {
-  font-size: 150%;
+    font-size: 150%;
 }
 p {
-  margin: 0.7%;
+    margin: 0.7%;
 }
 
 input {
-  width: 70%;
-  height: 4vh;
-  background-color: #f7f8fc;
+    width: 70%;
+    height: 4vh;
+    background-color: #f7f8fc;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
 }
 
 button {
-  margin-top: 1%;
-  width: 20vh;
-  height: 4vh;
-  color: white;
-  border: none;
-  border-radius: 2rem;
-  cursor: pointer;
+    margin-top: 1%;
+    width: 20vh;
+    height: 4vh;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
 }
 
 button:active {
-  transform: translateY(2px);
+    transform: translateY(2px);
 }
 button:hover {
-  background-color: #218838 !important;
+    background-color: #218838 !important;
 }
 
 /*
 Styles using ids of the newQuiz.html page
 */
-#container {
-  background-image: linear-gradient(to bottom right, #ffff92, #80ff80);
-}
 #content {
-  height: 100vh;
-  background-color: white;
-  margin: auto;
-  max-width: 75%;
-  text-align: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    height: 100vh;
+    margin: auto;
+    max-width: 75%;
+    text-align: center;
 }
 
 /*
 Styles using classes of the newQuiz.html page
 */
 .pageParts {
-  padding: 2%;
+    padding: 2%;
 }

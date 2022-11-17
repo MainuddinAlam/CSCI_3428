@@ -11,10 +11,10 @@
 const SERVER_URL = "http://140.184.230.209:3026";
 //array of the options of the question
 let optionsList = [];
-//counter variable
-let counter = 1;
 //boolean to check if message is shown on screen
 let isShown = false;
+
+const previewOptions = document.getElementById("previewOptions");
 
 /**
  * Function to save the options of a multiple choice question
@@ -27,15 +27,63 @@ let isShown = false;
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function saveOptions() {
-  //reference to the textfield where an option is being added
-  let option = getOptionReference();
-  //add the new option to the options list
-  optionsList.push(option.value);
-  console.log(optionsList);
-  //set the option value to empty string and update the placeholder
-  option.value = "";
-  counter++;
-  option.placeholder = `Enter Option #${counter}`;
+    //reference to the textfield where an option is being added
+    let option = getOptionReference();
+
+    // ensure new option is not empty
+    if (option.value.length == 0) {
+        return;
+    }
+
+    //add the new option to the options list
+    optionsList.push(option.value);
+    console.log(optionsList);
+    //set the option value to empty string and update the placeholder
+    option.value = "";
+    option.placeholder = `Enter Option #${optionsList.length + 1}`;
+
+    // update the preview by adding the new item at the end
+    populateSavedOPtionsPreview();
+}
+
+/**
+ * poplate the preview with the items in the option list
+ */
+function populateSavedOPtionsPreview() {
+    // clear the content of the preview
+    previewOptions.innerHTML = "";
+    // loop through the options
+    optionsList.forEach((option, i) => {
+        // create the option list
+        const listItem = document.createElement("li");
+
+        // create the option text holder
+        const text = document.createElement("p");
+        text.innerText = option;
+
+        // create the remove option button
+        const removeButton = document.createElement("button");
+
+        removeButton.addEventListener("click", () => {
+            // remove the option from the array
+            optionsList.splice(i, 1);
+            // get reference to the input text for the option
+            let option = getOptionReference();
+            // provide meaningful placehoder text
+            option.placeholder = `Enter Option #${optionsList.length + 1}`;
+            // upadte the option preview
+            populateSavedOPtionsPreview();
+        });
+
+        // add the text for the remove option button
+        removeButton.innerHTML = "remove";
+
+        // append the text and button to the option list
+        listItem.append(text, removeButton);
+
+        // append the option to the preview
+        previewOptions.append(listItem);
+    });
 }
 
 /**
@@ -48,13 +96,13 @@ function saveOptions() {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function generateOptions() {
-  //reference to the textfield where an option is being added
-  let option = getOptionReference();
-  $.get(`${SERVER_URL}/quiz/getWord`, (returnData) => {
-    option.value = returnData;
-  }).fail((err) => {
-    console.log(err.responeText);
-  });
+    //reference to the textfield where an option is being added
+    let option = getOptionReference();
+    $.get(`${SERVER_URL}/quiz/getWord`, (returnData) => {
+        option.value = returnData;
+    }).fail((err) => {
+        console.log(err.responeText);
+    });
 }
 
 /**
@@ -67,14 +115,16 @@ function generateOptions() {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function clearOptions() {
-  //empty out the options array
-  optionsList = [];
-  //reference to the textfield where an option is being added
-  let option = getOptionReference();
-  //set the option value to empty string and update the placeholder
-  option.value = "";
-  counter = 1;
-  option.placeholder = `Enter Option #${counter}`;
+    //empty out the options array
+    optionsList = [];
+    //reference to the textfield where an option is being added
+    let option = getOptionReference();
+    //set the option value to empty string and update the placeholder
+    option.value = "";
+    option.placeholder = `Enter Option #1`;
+
+    // update the preview
+    populateSavedOPtionsPreview();
 }
 
 /**
@@ -84,8 +134,8 @@ function clearOptions() {
  * @returns the reference to the question textfield
  */
 function getQuestionReference() {
-  let question = document.getElementById("question");
-  return question;
+    let question = document.getElementById("question");
+    return question;
 }
 
 /**
@@ -95,8 +145,8 @@ function getQuestionReference() {
  * @returns the reference to the options textfield
  */
 function getOptionReference() {
-  let option = document.getElementById("options");
-  return option;
+    let option = document.getElementById("options");
+    return option;
 }
 
 /**
@@ -106,8 +156,8 @@ function getOptionReference() {
  * @returns the reference to the correct answers textfield
  */
 function getCorrectAnswerReference() {
-  let correctAns = document.getElementById("correctAns");
-  return correctAns;
+    let correctAns = document.getElementById("correctAns");
+    return correctAns;
 }
 
 /**
@@ -121,16 +171,16 @@ function getCorrectAnswerReference() {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function clearQuestion() {
-  //reference to the textfield where question is being added
-  let question = getQuestionReference();
-  //reference to the textfield where the correct answer is being added
-  let correctAns = getCorrectAnswerReference();
-  //clear the question
-  question.value = "";
-  //clear the options
-  clearOptions();
-  //clear the correct answer
-  correctAns.value = "";
+    //reference to the textfield where question is being added
+    let question = getQuestionReference();
+    //reference to the textfield where the correct answer is being added
+    let correctAns = getCorrectAnswerReference();
+    //clear the question
+    question.value = "";
+    //clear the options
+    clearOptions();
+    //clear the correct answer
+    correctAns.value = "";
 }
 
 /**
@@ -147,33 +197,40 @@ function clearQuestion() {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 async function uploadToServer() {
-  //reference to the textfield where question is being added
-  let question = getQuestionReference();
-  //reference to the textfield where the correct answer is being added
-  let correctAns = getCorrectAnswerReference();
-  //save the details as a JSON object
-  const mcqInfo = {
-    Question: question.value,
-    Options: optionsList,
-    Correct_Answer: correctAns.value,
-  };
-  //send the question details to the server
-  $.post(`${SERVER_URL}/quiz/addMCQ`, mcqInfo, (returnData) => {
-    console.log(returnData);
-  }).fail((err) => {
-    console.log(err.responeText);
-  });
-  //clear the current question
-  clearQuestion();
+    //reference to the textfield where question is being added
+    let question = getQuestionReference();
+    //reference to the textfield where the correct answer is being added
+    let correctAns = getCorrectAnswerReference();
+    //save the details as a JSON object
+    const mcqInfo = {
+        Question: question.value,
+        Options: optionsList,
+        Correct_Answer: correctAns.value,
+    };
 
-  // Wait for 600 ms and display the saved message
-  setTimeout(() => {
-    //get the reference to the region where the message will be shown
-    let message = document.getElementById("message");
-    message.style.display = "";
-  }, 600);
-  //set the boolean variable to true
-  isShown = true;
+    // check if the correct answer matches an option
+    if (!optionsList.includes(correctAns.value)) {
+        alert("Answer does not match exactly with one of the options");
+        return;
+    }
+
+    //send the question details to the server
+    $.post(`${SERVER_URL}/quiz/addMCQ`, mcqInfo, (returnData) => {
+        console.log(returnData);
+    }).fail((err) => {
+        console.log(err.responeText);
+    });
+    //clear the current question
+    clearQuestion();
+
+    // Wait for 600 ms and display the saved message
+    setTimeout(() => {
+        //get the reference to the region where the message will be shown
+        let message = document.getElementById("message");
+        message.style.display = "";
+    }, 600);
+    //set the boolean variable to true
+    isShown = true;
 }
 
 /**
@@ -183,12 +240,12 @@ async function uploadToServer() {
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 function checkFocus() {
-  if (isShown == true) {
-    //get the reference to the region where the message will be shown
-    let message = document.getElementById("message");
-    //hide the message
-    message.style.display = "none";
-    //set the boolean variable to false
-    isShown = false;
-  }
+    if (isShown == true) {
+        //get the reference to the region where the message will be shown
+        let message = document.getElementById("message");
+        //hide the message
+        message.style.display = "none";
+        //set the boolean variable to false
+        isShown = false;
+    }
 }

@@ -82,8 +82,7 @@ header {
     bottom: 0;
     right: 0;
     margin: 2em;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
+    border-radius: 1rem;
     border: none;
     padding: 1em;
     align-items: center;
@@ -95,8 +94,13 @@ header {
     cursor: pointer;
     background-color: var(--bg-color);
 
+    p {
+        font-size: x-large;
+        margin-left: 0.3em;
+    }
+
     img {
-        width: 2.5em;
+        width: 2em;
     }
 }
 

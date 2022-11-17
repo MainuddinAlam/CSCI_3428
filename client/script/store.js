@@ -37,6 +37,8 @@ const cartItems = {};
 let items;
 // store the id of the item being viewed
 let itemId;
+// flag to know whether the cart is empty or not
+let cartEmpty;
 
 /**
  * get the items to be displayed
@@ -344,11 +346,13 @@ moreInfoPanel.addEventListener("click", (event) => {
 // open the cart modal
 cartBtn.addEventListener("click", () => {
     updateCart();
-    cart.showModal();
+    if (!cartEmpty) {
+        cart.showModal();
+    }
 });
 
 function updateCart() {
-    let cartEmpty = true;
+    cartEmpty = true;
     cartItemList.innerHTML = "";
     for (const [itemID, quantity] of Object.entries(cartItems)) {
         if (quantity != 0) {
@@ -404,8 +408,10 @@ cartClose.addEventListener("click", () => {
 
 // purchase items
 cartPurchase.addEventListener("click", () => {
-    if (confirm("Purcahse items")) {
-        location.reload();
+    if (!cartEmpty) {
+        if (confirm("Purcahse items")) {
+            location.reload();
+        }
     }
 });
 

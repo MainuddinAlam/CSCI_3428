@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Take the fun quiz</title>
+        <link
+            rel="shortcut icon"
+            href="./assets/favicon.ico"
+            type="image/x-icon"
+        />
+
+        <!-- jQuery library for DOM manipulation -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+        <!-- momentum scrolling -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.1/smooth-scrollbar.js"></script>
+        <!-- GSAP plugin for animation on scroll -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+        <!-- GSAP library for animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+
+        <!-- js-confetti used for the confetti animation when looking at the grade -->
+        <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
+        <link rel="stylesheet" href="./style/style.css" />
+        <link rel="stylesheet" href="./style/quiz.css" />
+
+        <script src="./script/script.js" defer></script>
+        <script src="./script/quiz.js" defer></script>
+    </head>
+
+    <body>
+        <!-- skip link to skip the navbar elements -->
+        <a class="skip_link" href="#main_content">Skip navbar</a>
+        <!-- navigation at the top -->
+        <nav>
+            <a href="./index.html" id="logo" title="homepage">French Village</a>
+            <button id="menu"><p>Menu</p></button>
+            <ul>
+                <li><a href="./conservation.html">Conservations</a></li>
+                <li><a href="./store.html">Store</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <main id="main_content">
+            <!-- The part of the quiz -->
+            <div id="quizPart">
+                <!-- The header of the quiz page-->
+                <header id="header">
+                    <div id="headerContent">
+                        <h1>Explore And Answer</h1>
+                        <p>
+                            Get to know the interesting facts and history of the
+                            French Village through a short and fun quiz.
+                        </p>
+                    </div>
+                </header>
+                <!-- The questions and options will go under this div -->
+                <div id="content"></div>
+
+                <button onclick="showModal()">Submit Quiz</button>
+                <dialog id="modal">
+                    <h2>Do you really want to submit?</h2>
+
+                    <span>
+                        <button class="dialogBtn" onclick="closeModal()">
+                            Cancel
+                        </button>
+                        <button
+                            id="submitBtn"
+                            class="dialogBtn"
+                            onclick="checkAnswers()"
+                        >
+                            Submit
+                        </button>
+                    </span>
+                </dialog>
+            </div>
+
+            <!-- The results part of the page-->
+            <div id="results" style="display: none">
+                <div id="marks"></div>
+
+                <button id="returnBtn" onclick="window.location.reload()">
+                    Return To Quiz
+                </button>
+            </div>
+        </main>
+    </body>
+</html>

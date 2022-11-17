@@ -1,0 +1,143 @@
+#header {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#header div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#header div h1 {
+  text-align: center;
+  font-size: 6vw;
+  text-transform: uppercase;
+  padding-bottom: 0.5em;
+}
+#header div p {
+  padding: 1em;
+}
+
+#contactPart {
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  margin: 1em 15vw;
+  display: grid;
+  grid-template-columns: auto auto;
+  border-radius: 1rem;
+}
+#contactPart .content {
+  padding: 1em;
+  width: 100%;
+  font-size: large;
+  margin-right: 3vw;
+}
+#contactPart .content h2 {
+  padding: 1em;
+  font-size: xx-large;
+  text-align: center;
+}
+#contactPart .content input {
+  width: 30vw;
+  height: 5vh;
+  margin-bottom: 1vh;
+  padding: 0.5em;
+  border-radius: 0.5rem;
+  border: solid 2px black;
+}
+#contactPart .content input:focus {
+  border-color: var(--primary-color);
+  outline: var(--primary-color);
+}
+#contactPart .content textarea {
+  width: 30vw;
+  height: 30vh;
+  border-radius: 0.5rem;
+  padding: 0.5em;
+  border: solid 2px black;
+}
+#contactPart .content textarea:focus {
+  border-color: var(--primary-color);
+  outline: var(--primary-color);
+}
+#contactPart img {
+  width: 100%;
+  border-radius: 1rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#contactPart .submitBtn {
+  width: 60%;
+  padding: 1%;
+  cursor: pointer;
+  border: none !important;
+  background-color: #218838;
+  color: white;
+}
+#contactPart .submitBtn:hover {
+  background-color: #0069d9;
+}
+#contactPart .submitBtn:active {
+  transform: translateY(2px);
+}
+
+#responsePart {
+  padding-top: 10vh;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+#responsePart h1 {
+  margin-top: auto;
+}
+#responsePart button {
+  cursor: pointer;
+  border: none;
+  background-color: #218838;
+  color: white;
+  margin: 5vh;
+  border-radius: 2em;
+  padding: 1em;
+}
+#responsePart button:hover {
+  background-color: #0069d9;
+}
+#responsePart button:active {
+  transform: translateY(2px);
+}
+
+.info {
+  text-align: center;
+  font-size: large;
+}
+
+@media only screen and (max-width: 768px) {
+  #header {
+    min-height: 40vh;
+  }
+  #header div h1 {
+    font-size: 8vw;
+  }
+  #contactPart {
+    grid-template-columns: auto;
+    margin: 1em;
+  }
+  #contactPart #content {
+    padding: 1em 0;
+    margin: 0;
+  }
+  #contactPart #content h2 {
+    padding: 0;
+  }
+  #contactPart #content input {
+    width: 100%;
+  }
+  #contactPart #content textarea {
+    width: 100%;
+  }
+}/*# sourceMappingURL=contact.css.map */

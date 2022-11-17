@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add new Species</title>
+        <!-- jQuery library for DOM manipulation -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+        <script src="./script/newSpecies.js" defer></script>
+        <link rel="stylesheet" href="./style/newSpecies.css" />
+    </head>
+    <body>
+        <div id="form">
+            <div class="preview"></div>
+            <label for="imageInput" id="imageInputLabel"
+                >Add Images
+                <input
+                    hidden
+                    type="file"
+                    name="images"
+                    id="imageInput"
+                    accept="image/*"
+                    multiple
+                />
+            </label>
+
+            <label for="category"
+                >Category:
+                <select name="category" id="category">
+                    <option value="unselected">Select Category</option>
+                    <option value="fauna">Fauna</option>
+                    <option value="flora">Flora</option>
+                </select>
+            </label>
+
+            <label for="name">Name: <input id="name" type="text" /></label>
+
+            <label for="description"
+                >Description:
+                <textarea
+                    name="description"
+                    id="description"
+                    cols="80"
+                    rows="10"
+                ></textarea>
+            </label>
+
+            <button id="upload">Upload</button>
+
+            <div id="progress"></div>
+        </div>
+    </body>
+</html>

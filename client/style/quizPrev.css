@@ -1,0 +1,144 @@
+/*Styles for the quiz page
+ *
+ * Author: Mainuddin Alam Irteja (A00446752)
+ */
+
+/* Styling based on element tags */
+h1 {
+    text-align: center;
+    font-style: italic;
+    font-size: 270%;
+    color: #edffed;
+}
+
+fieldset,
+legend {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    position: relative;
+    border-image: linear-gradient(45deg, #12ff12, #00a400) 1;
+    margin: 1em auto;
+    padding: 2em;
+    width: 90%;
+}
+legend {
+    font-weight: bold;
+    float: left;
+    width: 100%;
+}
+
+span {
+    color: green;
+    font-size: 110%;
+    animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+button {
+    width: 13%;
+    padding: 1%;
+    cursor: pointer;
+
+    border-image: linear-gradient(45deg, #80ff80, #00a400) 1;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+button:hover {
+    background-image: linear-gradient(
+        to bottom right,
+        #ffffb6,
+        #ffff92,
+        #80ff80
+    );
+}
+
+/* Styles based on ids*/
+#header {
+    padding: 3%;
+    background-image: linear-gradient(
+        to bottom right,
+        yellow,
+        #80ff80,
+        #00a400
+    );
+}
+
+#marks {
+    max-width: 70%;
+    margin: auto;
+    font-size: 270%;
+    padding: 5%;
+    text-align: center;
+}
+
+/* Styles based on classes*/
+.container {
+    max-width: 70%;
+    margin: auto;
+    background-color: #edffed;
+    padding: 10%;
+}
+
+.cBorder {
+    display: grid;
+
+    border: 8px solid;
+    padding: 1rem;
+}
+.borderColor {
+    border-image: linear-gradient(45deg, yellow, #80ff80, #00a400) 1;
+}
+
+.centerAllign {
+    text-align: center;
+    align-items: center;
+}
+
+#modal {
+    background-image: linear-gradient(
+        to bottom right,
+        yellow,
+        #80ff80,
+        #00a400
+    );
+    border-radius: 10px;
+    width: 30%;
+    height: 20%;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+}
+
+#modal > * {
+    margin: 0 0 0.5rem 0;
+}
+#modal::backdrop {
+    background: rgb(0 0 0 / 0.4);
+}
+
+#submitBtn {
+    margin-right: 1%;
+}
+
+.dialogBtn {
+    width: 30%;
+    padding: 1%;
+}
+.modalHeader {
+    align-items: center;
+
+    padding: 1%;
+    top: 0;
+    border-radius: 10px;
+}

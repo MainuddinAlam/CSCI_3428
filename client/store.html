@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Store</title>
+        <link
+            rel="shortcut icon"
+            href="./assets/favicon.ico"
+            type="image/x-icon"
+        />
+
+        <!-- jQuery library for DOM manipulation -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+        <!-- momentum scrolling -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.1/smooth-scrollbar.js"></script>
+        <!-- GSAP plugin for animation on scroll -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+        <!-- GSAP library for animations -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+
+        <link rel="stylesheet" href="./style/style.css" />
+        <link rel="stylesheet" href="./style/store.css" />
+
+        <script src="./script/script.js" defer></script>
+        <script src="./script/store.js" defer></script>
+    </head>
+    <body>
+        <!-- skip link to skip the navbar elements -->
+        <a class="skip_link" href="#main_content">Skip navbar</a>
+        <!-- navigation at the top -->
+
+        <nav>
+            <a href="./index.html" id="logo" title="homepage">French Village</a>
+            <button id="menu"><p>Menu</p></button>
+            <ul>
+                <li><a href="./conservation.html">Conservations</a></li>
+                <li><a href="./store.html">Store</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main id="main_content">
+            <header>
+                <div id="headerContent">
+                    <h1>Store</h1>
+                    <p>
+                        Check out the things you can buy as souvenir while also
+                        supporting us!
+                    </p>
+                </div>
+            </header>
+
+            <section id="store"></section>
+
+            <footer id="footer">
+                <div id="topOpenning"></div>
+                <div id="footerWrapper">
+                    <div id="footer_logo">
+                        <h1>French Village</h1>
+                        <p>
+                            French Village has an extensive amount of species
+                            and activities for you to experience. <br />
+                            Want to quickly know some of the top species and
+                            activities that we offer?
+                            <a href="./quiz.html">Take the short quiz.</a>
+                        </p>
+                    </div>
+
+                    <div id="location">
+                        <h3>Address</h3>
+                        <a href="https://www.google.ca/maps" target="_blank">
+                            71 St Pauls Ln,<br />
+                            French Village, NS B3Z 4E3
+                        </a>
+                    </div>
+
+                    <div id="social">
+                        <h3>Connect with us</h3>
+                        <p>phone: 802 123 4568</p>
+                        <p id="email">
+                            Email:
+                            <a href="mailto:example@email.com">
+                                contact@frenchVillage.com
+                            </a>
+                        </p>
+                        <a href="https://www.facebook.com/" target="_blank"
+                            >Facebook</a
+                        >
+                        <a href="https://twitter.com/" target="_blank"
+                            >Twitter</a
+                        >
+                        <a href="https://www.youtube.com/" target="_blank"
+                            >Youtube</a
+                        >
+                    </div>
+                </div>
+            </footer>
+        </main>
+        <button id="cartBtn" title="view cart">
+            <img src="./assets/cart_icon.svg" alt="cart" />
+        </button>
+        <div id="moreInfoBackground">
+            <div id="moreInfoPanel">
+                <button
+                    id="moreInfoCloseBtn"
+                    title="close"
+                    onclick="closeMoreInfoPanel()"
+                >
+                    Close
+                </button>
+                <h1></h1>
+                <span>
+                    <img id="mainImg" src="" />
+                </span>
+                <div id="otherImgs"></div>
+                <p id="description"></p>
+                <p id="price"></p>
+                <span>
+                    <button
+                        title="remove 1 item"
+                        id="decrementItemQuantity"
+                        onclick="decrementItemInCart()"
+                    >
+                        -
+                    </button>
+                    <p id="itemQuantity">0</p>
+                    <button id="addToCart" onclick="addItemToCart()">
+                        Add to Cart
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <dialog id="cart">
+            <h1>Cart</h1>
+            <ul id="cartItems"></ul>
+            <p id="totalPrice"></p>
+            <span>
+                <button id="closeCart">Close</button>
+                <button id="purcahse">Purchase</button>
+            </span>
+        </dialog>
+    </body>
+</html>

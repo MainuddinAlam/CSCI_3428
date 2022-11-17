@@ -208,6 +208,12 @@ async function uploadToServer() {
         Correct_Answer: correctAns.value,
     };
 
+    // check if the question is defined
+    if (question.value == 0) {
+        alert("Please enter a question");
+        return;
+    }
+
     // check if the correct answer matches an option
     if (!optionsList.includes(correctAns.value)) {
         alert("Answer does not match exactly with one of the options");

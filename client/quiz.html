@@ -1,3 +1,8 @@
+<!-- 
+    Define the markup of the quiz page for the French Village website
+
+    Author: Mainuddin Alam Irteja (A00446752)
+ -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,6 +10,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Take the fun quiz</title>
+
+        <!-- favicon of the webapge -->
         <link
             rel="shortcut icon"
             href="./assets/favicon.ico"
@@ -27,25 +34,37 @@
         <!-- js-confetti used for the confetti animation when looking at the grade -->
         <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 
+        <!-- Programmer defined default css -->
         <link rel="stylesheet" href="./style/style.css" />
+        <!-- Programmer defined css for this page -->
         <link rel="stylesheet" href="./style/quiz.css" />
 
+        <!-- Programmer defined default scripts -->
         <script src="./script/script.js" defer></script>
+        <!-- Programmer defined script for this page -->
         <script src="./script/quiz.js" defer></script>
     </head>
 
     <body>
-        <!-- skip link to skip the navbar elements -->
+        <!-- skip link to skip the navbar -->
         <a class="skip_link" href="#main_content">Skip navbar</a>
-        <!-- navigation at the top -->
+        <!-- navigation bar at the top of the page -->
         <nav>
+            <!-- Logo of the website which is also a link to the homepage -->
             <a href="./index.html" id="logo" title="homepage">French Village</a>
+            <!-- menu button which is only visible when on mobile -->
             <button id="menu"><p>Menu</p></button>
+            <!-- list of the pages on the webpage -->
             <ul>
+                <!-- link to the conservation page -->
                 <li><a href="./conservation.html">Conservations</a></li>
+                <!-- link to the store page -->
                 <li><a href="./store.html">Store</a></li>
+                <!-- link to the about us page -->
                 <li><a href="./about.html">About</a></li>
+                <!-- link to the quiz page -->
                 <li><a href="./quiz.html">Quiz</a></li>
+                <!-- link to the contact page -->
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>

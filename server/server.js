@@ -1,14 +1,29 @@
+/**
+ * Root js file for the server. it connects the rest of the file created for the
+ * server together.
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Mainuddin Alam Irteja (A00446752)
+ */
+
 const express = require("express");
 const mongoose = require("mongoose");
 const server = express();
 const port = 3026;
 
+// refer to the routes created in other files
+// refer to the species.js file which contains the routes for species
 const speciesRouter = require("./Routes/species");
+// refer to the store.js file which contains the routes for store
 const storeRouter = require("./Routes/store");
+// refer to the contacts.js file which contains the routes for contacts
 const contactsRouter = require("./Routes/contacts");
+// refer to the quiz.js file which contains the routes for quiz
 const quizRouter = require("./Routes/quiz");
+// refer to the map.js file which contains the routes for map
 const mapRouter = require("./Routes/map");
 
+// build the connection string
 let head = "mongodb://";
 let user = "group23E";
 let password = "41AustriaLeaderThin";
@@ -38,8 +53,8 @@ let allowCrossDomain = function (req, res, next) {
 server.use(allowCrossDomain);
 
 try {
+    // connect to the database
     mongoose.connect(connectionString);
-    // connection succesful
 
     // listen to request to /map
     server.use("/map", mapRouter);
@@ -56,9 +71,9 @@ try {
     // listen to request to /quiz
     server.use("/quiz", quizRouter);
 
-    // start listening
+    // start listening on the port
     server.listen(port, function () {
-        console.log("Listening on port 3026");
+        console.log(`Listening on port ${port}.`);
     });
 } catch (error) {
     // handle error on the server

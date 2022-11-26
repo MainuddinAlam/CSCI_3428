@@ -1,11 +1,26 @@
+/**
+ * The purpose of this file is to add the behaviors and animation that are
+ * shared by all pages.
+ *
+ * - Behaviours and animation for the naviagation bar
+ * - momentum scrollbar
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ */
+
 // register the scroll triggered animation plugin
 gsap.registerPlugin(ScrollTrigger);
 
 // reference to DOM element
+// reference to the navbar
 const navbar = document.querySelector("nav");
+// reference to the main document use for adding the momentum scrollbar
 const main = document.querySelector("main");
+// reference to the menu list to be hidden when on mobile
 const menu = navbar.querySelector("#menu");
+// reference to the links of the pages
 const menuLinks = navbar.querySelector("ul");
+// reference to the menu button when on mobile
 const menuText = menu.querySelector("p");
 
 // constant
@@ -25,8 +40,12 @@ let isMenuOpen = false;
 
 let bodyScrollBar;
 
+/**
+ *
+ * @param element the HTML element to which to add the smooth scrolling behaviour
+ */
 function enableSmoothScroll(element) {
-    // check if user is on mobile to disable smooth scrolling
+    // check if user is on decktop to disable smooth scrolling
     if (window.innerWidth > TABLET_WIDTH) {
         // remove any smooth scrollbar instance before
         Scrollbar.destroyAll();
@@ -91,10 +110,19 @@ function enableSmoothScroll(element) {
 // enable smooth scrolling
 enableSmoothScroll(main);
 
+// make the menu button when on mobile open/close the navigation menu
 menu.addEventListener("click", () => {
     menuToggle();
 });
 
+/**
+ * show/hide the list of links.
+ *
+ * - toggle the flag for the state of the menu list presence
+ * - animate the menu list in view or out of view based on the isMenuOpen flag
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ */
 function menuToggle() {
     // toggle expanding the navabr when on mobile
     isMenuOpen = !isMenuOpen;

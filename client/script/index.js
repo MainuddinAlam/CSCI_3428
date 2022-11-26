@@ -60,96 +60,6 @@ const markersPanelCloseBtn = mapContainer.querySelector("#close_panel");
 // reference to the map path
 const path = mapContainer.querySelector("#path");
 
-// get the markers information from server (TEMPORARILY HARD CODED) TODO: REMOVE
-// const locationsInfo = [
-//     {
-//         x: 500,
-//         y: 386,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Trailhead",
-//     },
-//     {
-//         x: 640,
-//         y: 500,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Hazelnut tree",
-//     },
-//     {
-//         x: 706,
-//         y: 615,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Big Apple Tree",
-//     },
-//     {
-//         x: 775,
-//         y: 624,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Pear Tree",
-//     },
-//     {
-//         x: 790,
-//         y: 685,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Cherry-Honeysuckle Arch",
-//     },
-//     {
-//         x: 780,
-//         y: 745,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Spruce Grove",
-//     },
-//     {
-//         x: 860,
-//         y: 764,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Foundation",
-//     },
-//     {
-//         x: 955,
-//         y: 830,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Open Honeysuckle, sweet cherry",
-//     },
-
-//     {
-//         x: 1035,
-//         y: 880,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Enter Big Grove",
-//     },
-//     {
-//         x: 1010,
-//         y: 950,
-//         description: "Description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Well",
-//     },
-//     {
-//         x: 1140,
-//         y: 1000,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Very Big Apple Tree",
-//     },
-//     {
-//         x: 1240,
-//         y: 990,
-//         description:
-//             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga, provident voluptas quas pariatur laboriosam porro atque excepturi fugit dicta",
-//         imgUrl: "./assets/satMap.png",
-//         title: "End of trail",
-//     },
-// ];
-
 // get a promise for the location info
 const locationsInfo = $.get({
     url: SERVER_URL + "/map/getMarkers",
@@ -202,7 +112,7 @@ indicatorInterval = setInterval(() => {
  * The purpose of this function is to fade out all the images and then fade in
  * the desired image.
  *
- * Authors: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118)
  * @param index index of the desired image
  */
 function animateHeaderImg(index) {
@@ -225,7 +135,7 @@ function animateHeaderImg(index) {
  * The purpose of this function is to animate out the existing text content and
  * animate in the desired text content.
  *
- * Authors: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118)
  * @param index index of the desired text content
  */
 function animateHeaderText(index) {
@@ -261,7 +171,7 @@ function animateHeaderText(index) {
  * The purpose of this function is to animate animate all the indicators to 0
  * and animate the indicator for the desired header content.
  *
- * Authors: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118)
  * @param index index of the desired indicator
  */
 function animateHeaderIndicator(index) {

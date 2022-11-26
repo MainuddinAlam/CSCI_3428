@@ -196,10 +196,14 @@ window.addEventListener("resize", () => {
     appendColumns();
 });
 
-Scrollbar.init(moreInfoPanel, {
-    damping: 0.1,
-    syncCallbacks: true,
-});
+// check of user is on desktop
+if (window.innerWidth > TABLET_WIDTH) {
+    // user is on desktop enable momentum scrollbar on the more information panel
+    Scrollbar.init(moreInfoPanel, {
+        damping: 0.1,
+        syncCallbacks: true,
+    });
+}
 
 /**
  * display a panel for more information on the item

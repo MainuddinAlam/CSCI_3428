@@ -1,3 +1,12 @@
+/**
+ * The purpose of this file is to add the behaviors and animation for the
+ * conservation page.
+ * Populate the conservation page gallery with images and corresponding image
+ * name.
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ */
+
 // reference to the bar for selecting fauna or flora
 const categorySelection = document.querySelector("#categorySelection span");
 // reference to the gallery section
@@ -292,10 +301,14 @@ window.addEventListener("resize", () => {
     appendColumns();
 });
 
-Scrollbar.init(moreInfoPanel, {
-    damping: 0.1,
-    syncCallbacks: true,
-});
+// check of user is on desktop
+if (window.innerWidth > TABLET_WIDTH) {
+    // user is on desktop enable momentum scrollbar on the more information panel
+    Scrollbar.init(moreInfoPanel, {
+        damping: 0.1,
+        syncCallbacks: true,
+    });
+}
 
 /**
  * display a panel for more information on the specices
@@ -336,8 +349,10 @@ function openMoreInfoPanel(data) {
                     smallImg.classList.remove("activeImg");
                 });
 
+            // set the active image class on the new image
             smallImg.classList.add("activeImg");
 
+            // change the main image
             moreInfoPanelImage.src = img;
         });
 
@@ -367,6 +382,7 @@ function openMoreInfoPanel(data) {
         );
 }
 
+// check of user is on desktop
 if (window.innerWidth > MOBILE_WIDTH) {
     // zoom into image on hover
     moreInfoPanelImageWrapper.addEventListener("mouseover", () => {
@@ -402,10 +418,12 @@ if (window.innerWidth > MOBILE_WIDTH) {
                 moreInfoPanelImageWrapper.clientHeight / 2) /
             moreInfoPanelImageWrapper.clientHeight;
 
+        // translate the horizontal postion of the image to show the right portion
         moreInfoPanelImage.style.left = `${
             moreInfoPanelImageWrapper.clientWidth * -relativeX
         }px`;
 
+        // translate the vertical postion of the image to show the right portion
         moreInfoPanelImage.style.top = `${
             moreInfoPanelImageWrapper.clientHeight * -relativeY
         }px`;

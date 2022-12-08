@@ -35,12 +35,16 @@ const MOBILE_WIDTH = 640;
 // variable
 // keep track of previous scroll position
 let scrollPosition = 0;
-
+// flag if the menu is open
 let isMenuOpen = false;
-
+// store the reference for the scroll behaviour
 let bodyScrollBar;
 
 /**
+ * add the smooth scrolling effect to every page that the script is run in,
+ * provided the user is on desktop
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
  *
  * @param element the HTML element to which to add the smooth scrolling behaviour
  */
@@ -49,7 +53,7 @@ function enableSmoothScroll(element) {
     if (window.innerWidth > TABLET_WIDTH) {
         // remove any smooth scrollbar instance before
         Scrollbar.destroyAll();
-        // Setup
+        // setup for the scrolling
         bodyScrollBar = Scrollbar.init(element, {
             damping: 0.1,
             delegateTo: document,

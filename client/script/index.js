@@ -87,6 +87,7 @@ gsap.ticker.lagSmoothing(false);
  * simultaneously animate all the indcators to the desired one.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index the index of the header content to be displayed
  */
 function headerState(index) {
@@ -113,6 +114,7 @@ indicatorInterval = setInterval(() => {
  * the desired image.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index index of the desired image
  */
 function animateHeaderImg(index) {
@@ -136,6 +138,7 @@ function animateHeaderImg(index) {
  * animate in the desired text content.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index index of the desired text content
  */
 function animateHeaderText(index) {
@@ -172,6 +175,7 @@ function animateHeaderText(index) {
  * and animate the indicator for the desired header content.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index index of the desired indicator
  */
 function animateHeaderIndicator(index) {
@@ -254,6 +258,7 @@ galleryImgs.forEach((image, i) => {
  * order to re-plot the markers and labels so that they are in the right place
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param locationsInfo array of information on the markers
  */
 async function plotMarkersAndPath(locationsInfo) {
@@ -427,6 +432,8 @@ function animatePathAndMarkers() {
  * If display is true then animate the marker label to appear above the marker
  * otherwise animate it to be hidden.
  *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param markerLabel the markers labeling element
  * @param display flag to add or remove label from the map
  */
@@ -456,6 +463,7 @@ function toggleLocationLabel(markerLabel, display) {
  * paragraph.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param locationInfo information on the markers location
  */
 function upadateMarkerPanel(locationInfo) {
@@ -477,6 +485,7 @@ function upadateMarkerPanel(locationInfo) {
  * of the marker panel close button to 1 if display is true and 0 otherwise.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param display boolean value indicate whether to display or hide panel
  */
 function toggleMarkerPanel(display) {

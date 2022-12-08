@@ -31,7 +31,7 @@ const cartItemList = cart.querySelector("#cartItems");
 // reference to the cart items total price
 const cartTotalPrice = cart.querySelector("#totalPrice");
 
-// store the items id to be use in the cart page
+// store the items id to be use in the cart page and the number of the item
 const cartItems = {};
 // store the list of items
 let items;
@@ -142,6 +142,7 @@ function populateColumns(items) {
                             translateY: "10%",
                         }
                     );
+                    // animate the images into view
                     gsap.to(itemContainer, {
                         opacity: 1,
                         scale: 1,
@@ -157,7 +158,7 @@ function populateColumns(items) {
  * Author: Agowun Muhammad Altaf (A00448118)
  */
 function appendColumns() {
-    // get the width og the screen
+    // get the width of the screen
     const windowWidth = window.innerWidth;
     // store the number of columns to be added
     let numColumns = 1;
@@ -196,7 +197,7 @@ window.addEventListener("resize", () => {
     appendColumns();
 });
 
-// check of user is on desktop
+// check if user is on desktop
 if (window.innerWidth > TABLET_WIDTH) {
     // user is on desktop enable momentum scrollbar on the more information panel
     Scrollbar.init(moreInfoPanel, {
@@ -217,7 +218,7 @@ function openMoreInfoPanel(data) {
     itemId = data._id;
     // update the name for the panel
     moreInfoPanelH1.textContent = data.name;
-    // update the main image
+    // update the main image in the panel
     moreInfoPanelImage.src = data.imgsURL[0];
     // set the description for that item
     moreInfoPanelDescription.innerText = data.description;
@@ -229,7 +230,7 @@ function openMoreInfoPanel(data) {
     // clear the previous images
     moreInfoPanelOtherImg.innerHTML = "";
 
-    // add the new imagess
+    // add the images in the list section below the main image
     data.imgsURL.forEach((img, i) => {
         // create the smaller image preview
         const smallImg = document.createElement("img");
@@ -262,13 +263,13 @@ function openMoreInfoPanel(data) {
     // set the panel and background to visible
     gsap.set(moreInfoBackground, { display: "flex" });
 
-    // animate the the more information panel background in
+    // animate the the more information panel background into view
     gsap.timeline()
         .to(moreInfoBackground, {
             opacity: 1,
             duration: 0.3,
             ease: Circ.EaseInOut,
-        }) // animate the the more information panel in
+        }) // animate the the more information panel into view
         .fromTo(
             moreInfoPanel,
             { height: 0, duration: 0 },
@@ -320,12 +321,13 @@ function decrementItemInCart() {
  * Author: Agowun Muhammad Altaf (A00448118)
  */
 function closeMoreInfoPanel() {
+    // animate the the more information panel background out of view
     gsap.timeline()
         .to(moreInfoPanel, {
             height: 0,
             duration: 0.4,
             ease: Circ.EaseIn,
-        })
+        }) // animate the the more information panel out of view
         .to(
             moreInfoBackground,
             {
@@ -355,52 +357,76 @@ cartBtn.addEventListener("click", () => {
     }
 });
 
+/**
+ * update the content of the cart:
+ * update the list of items in the cart pop up
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ */
 function updateCart() {
+    // set the flag for empty cart to false by default
     cartEmpty = true;
+    // empty the content of the cart pop up
     cartItemList.innerHTML = "";
+
+    // loop thought the content of the cart
     for (const [itemID, quantity] of Object.entries(cartItems)) {
+        // check if there is at least one quantity in the cart
         if (quantity != 0) {
+            // since there is at least one item the cart set the flag for empty cart to false
             cartEmpty = false;
+            // get the information for the item
             const item = items.find((el) => el._id == itemID);
+            // create a list item for the item
             const row = document.createElement("li");
+            // create the text to display the items in the cart
             const itemName = document.createElement("p");
             itemName.innerText = item.name;
 
+            // create the section for item quantity
             const itemManagement = document.createElement("div");
             itemManagement.classList.add("itemManagement");
 
+            // add the input to manage the quantity of the item
             const itemQuantity = document.createElement("input");
             itemQuantity.type = "number";
             itemQuantity.min = 0;
             itemQuantity.max = 10;
             itemQuantity.value = Number(quantity);
 
+            // the total price for the item
             const itemTotalPrice = document.createElement("p");
             itemTotalPrice.innerText = `$${(
                 item.price * Number(quantity)
             ).toFixed(2)}`;
 
+            // monitor the change on the quantity for the item
             itemQuantity.onchange = () => {
+                // if the item entered by the user is less than 0 set it to 0
                 newValue = itemQuantity.value < 0 ? 0 : itemQuantity.value;
                 cartItems[itemID] = newValue;
 
+                // update the total price for the item
                 itemTotalPrice.innerText = `$${(item.price * newValue).toFixed(
                     2
                 )}`;
 
+                // update the total price for all the items in the cart
                 updateTotalPrice();
             };
 
+            // append the item to the cart
             itemManagement.append(itemQuantity, itemTotalPrice);
-
             row.append(itemName, itemManagement);
             cartItemList.append(row);
         }
     }
 
+    // if the empty cart flag remained true then display a warning for it
     if (cartEmpty) {
         cartItemList.innerText = "Cart is empty";
     } else {
+        // otherwise update the total price for the cart
         updateTotalPrice();
     }
 }
@@ -419,14 +445,24 @@ cartPurchase.addEventListener("click", () => {
     }
 });
 
+/**
+ * calculate the total price for all items in the cart
+ *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ */
 function updateTotalPrice() {
+    // the default initial price for the item to be 0
     let totalPrice = 0;
 
+    // loop through the items in the cart
     for (const [itemID, quantity] of Object.entries(cartItems)) {
+        // get the item information (to get the price per unit of the item)
         const item = items.find((el) => el._id == itemID);
+        // update the total price
         totalPrice += Number(item.price) * Number(quantity);
     }
 
+    // set the cart total price
     cartTotalPrice.innerHTML =
         totalPrice == 0 ? "" : `Total price: $${totalPrice.toFixed(2)}`;
 }

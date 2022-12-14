@@ -75,26 +75,16 @@ router.post("/add", async (req, res) => {
 });
 
 /**
- * get a list of item first image, name and price
- *
- * Author: Anmol Bhatla (A00441358)
- */
-
-/**
  * Purpose: The purpose of this express function is to receive a POST request
  * at the URL = http://140.184.230.209:3026/store/getitems.
  * This express function calls an anonymous callback function once the POST
  * request gets recognized.
  *
- * :category is either fauna or flora
- * :index is a number use to pick document after a certain number of documents
- *
  * @param "/getitems" is the relative url destination to be recognized
  * @param anonymous callback function gets executed once the POST request
  * is recognized.
  *
- *        Purpose: get a list of size PAGINATION_NUM (6) of species for the
- *        category and from the index specified
+ *        Purpose: get a list of all the items in the store
  *
  *        @param req is the predefined request object
  *        @param res is the predefined result object
@@ -105,15 +95,18 @@ router.post("/add", async (req, res) => {
  *           name: String,
  *           imgsURL: [String],
  *           description: String
+ *           price: Number
  *          },
  *           _id: String,
  *           name: String,
  *           imgsURL: [String],
  *           description: String
+ *           price: Number
  *          }, ...
  *         ]
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118), shared the code from Routes/species
+ * Author: Anmol Bhatla (A00441358), wrote and adapted the code from Routes/species file
  */
 router.post("/getitems", async (req, res) => {
     const itemList = await Item.find() // find all the items
@@ -124,16 +117,39 @@ router.post("/getitems", async (req, res) => {
 });
 
 /**
- * get all the information on a specific item
+ * Purpose: The purpose of this express function is to receive a GET request
+ * at the URL = http://140.184.230.209:3026/store/itemFullInfo/:itemId.
+ * This express function calls an anonymous callback function once the GET
+ * request gets recognized.
  *
- * itemId: objectId of the item
+ * :itemId _id of a specific item
  *
- * Author: Anmol Bhatla (A00441358)
+ * @param "/itemFullInfo/:itemId" is the relative url destination to be recognized
+ * @param anonymous callback function gets executed once the GET request
+ * is recognized.
+ *
+ *        Purpose: get the information for a single specific item
+ *
+ *        @param req is the predefined request object
+ *        @param res is the predefined result object
+ *
+ *        @returns
+ *          {
+ *           _id: String,
+ *           name: String,
+ *           imgsURL: [String],
+ *           description: String
+ *           price: Number
+ *          }
+ *
+ * Author: Agowun Muhammad Altaf (A00448118), shared the code from Routes/species
+ * Author: Anmol Bhatla (A00441358), wrote and adapted the code from Routes/species file
  */
 router.get("/itemFullInfo/:itemId", async (req, res) => {
     // get the value in the paramenters (itemId)
     const { itemId } = req.params;
 
+    // fetch the information from the database
     const itemData = await Item.findOne({ _id: itemId });
 
     return res.status(200).send(itemData);

@@ -99,12 +99,18 @@
 
 #responsePart {
   padding-top: 10vh;
-  min-height: -webkit-fit-content;
-  min-height: -moz-fit-content;
-  min-height: fit-content;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #responsePart h1 {
-  margin-top: auto;
+  text-align: center;
+  font-size: 6vw;
+  text-transform: uppercase;
+  padding-bottom: 0.5em;
 }
 #responsePart button {
   cursor: pointer;

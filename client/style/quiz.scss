@@ -8,177 +8,177 @@
 
 //Styles for the header of the quiz page
 #header {
-  width: 10%;
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  div {
+    width: 100%;
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    h1 {
-      text-align: center;
-      font-size: 6vw;
-      text-transform: uppercase;
-      padding-bottom: 0.5em;
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            text-align: center;
+            font-size: 6vw;
+            text-transform: uppercase;
+            padding-bottom: 0.5em;
+        }
+        p {
+            padding: 1em;
+        }
     }
-    p {
-      padding: 1em;
-    }
-  }
 }
 
 //Styles for the quiz part of the page
 #quizPart {
-  padding: 1em 15vw;
-  #content {
-    transform: translateZ(1%);
-    fieldset {
-      /* set the border to 3px. */
-      $border: 3px;
-      padding: 1.5em;
-      border-radius: 0.5rem;
-      margin: 2em 0;
-      background-clip: padding-box;
-      border: solid $border transparent;
-      position: relative;
-      background-color: var(--bg-color);
+    padding: 1em 15vw;
+    #content {
+        transform: translateZ(1%);
+        fieldset {
+            /* set the border to 3px. */
+            $border: 3px;
+            padding: 1.5em;
+            border-radius: 0.5rem;
+            margin: 2em 0;
+            background-clip: padding-box;
+            border: solid $border transparent;
+            position: relative;
+            background-color: var(--bg-color);
 
-      &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        border-radius: inherit;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: -$border;
-        background: linear-gradient(45deg, #80ff80, #00a400);
-      }
-    }
-    // Animation for the "Saved" message to appear. The message will be
-    //shown when user clicks an option of a question.
-    legend {
-      font-weight: bold;
-      float: left;
-      width: 100%;
-      padding-bottom: 0.5em;
-      display: flex;
-      justify-content: space-between;
-
-      span {
-        padding-left: 1em;
-        opacity: 0.3;
-        animation: fadeIn ease 0.5s;
-      }
-
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
+            &::before {
+                content: "";
+                z-index: -1;
+                position: absolute;
+                border-radius: inherit;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: -$border;
+                background: linear-gradient(45deg, #80ff80, #00a400);
+            }
         }
-        100% {
-          opacity: 0.3;
+        // Animation for the "Saved" message to appear. The message will be
+        //shown when user clicks an option of a question.
+        legend {
+            font-weight: bold;
+            float: left;
+            width: 100%;
+            padding-bottom: 0.5em;
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                padding-left: 1em;
+                opacity: 0.3;
+                animation: fadeIn ease 0.5s;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 0.3;
+                }
+            }
         }
-      }
+
+        label {
+            margin-left: 0.3em;
+        }
     }
 
-    label {
-      margin-left: 0.3em;
-    }
-  }
-
-  button {
-    cursor: pointer;
-    border-radius: 0.5rem;
-    padding: 0.75em 1.5em;
-    font-size: medium;
-    border: none;
-    color: white;
-    background-color: var(--primary-color);
-  }
-
-  //Styles for the modal
-  #modal {
-    background-color: var(--bg-color);
-    margin: auto;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 1em;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
-      0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
-      0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
-
-    h2 {
-      padding-bottom: 1em;
+    button {
+        cursor: pointer;
+        border-radius: 0.5rem;
+        padding: 0.75em 1.5em;
+        font-size: medium;
+        border: none;
+        color: white;
+        background-color: var(--primary-color);
     }
 
-    span {
-      width: 100%;
-      display: flex;
-      justify-content: end;
+    //Styles for the modal
+    #modal {
+        background-color: var(--bg-color);
+        margin: auto;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1em;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+            0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+            0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 
-      button:nth-child(1) {
-        background-color: transparent;
-        color: black;
-      }
+        h2 {
+            padding-bottom: 1em;
+        }
+
+        span {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+
+            button:nth-child(1) {
+                background-color: transparent;
+                color: black;
+            }
+        }
     }
-  }
 }
 
 //Styles for the results part of the page
 #results {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  #marks {
-    font-size: 5em;
-    font-weight: bold;
-    padding-bottom: 1em;
-    text-align: center;
-  }
+    #marks {
+        font-size: 5em;
+        font-weight: bold;
+        padding-bottom: 1em;
+        text-align: center;
+    }
 
-  #returnBtn {
-    cursor: pointer;
-    border-radius: 0.5rem;
-    padding: 0.75em 1.5em;
-    font-size: medium;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+    #returnBtn {
+        cursor: pointer;
+        border-radius: 0.5rem;
+        padding: 0.75em 1.5em;
+        font-size: medium;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 }
 
 //The following styles are for tablets and smartphones
 
 //Styles for making tablet size responsive
 @media only screen and (max-width: 768px) {
-  #header {
-    min-height: 40vh;
-    div {
-      h1 {
-        font-size: 8vw;
-      }
+    #header {
+        min-height: 40vh;
+        div {
+            h1 {
+                font-size: 8vw;
+            }
+        }
     }
-  }
-  #quizPart {
-    padding: 1em;
-  }
+    #quizPart {
+        padding: 1em;
+    }
 }
 
 //Styles for making the smartphone size responsive
 @media only screen and (max-width: 640px) {
-  #results {
-    #marks {
-      font-size: 2em;
+    #results {
+        #marks {
+            font-size: 2em;
+        }
     }
-  }
 }

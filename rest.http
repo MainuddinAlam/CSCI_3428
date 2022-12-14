@@ -92,3 +92,18 @@ content-type: application/json
     },
     ]
 }
+
+###
+
+POST http://140.184.230.209:3026/species/getSpecies/fauna/0
+content-type: application/json
+
+###
+
+GET http://140.184.230.209:3026/species/speciesFullInfo/636e9f0a9f7985226e945845
+content-type: application/json
+
+###
+
+GET http://140.184.230.209:3026/map/getMarkers
+content-type: application/json

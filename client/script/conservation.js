@@ -1,28 +1,41 @@
-// reference to the bar for selecting fauna or flora
+/**
+ * The purpose of this file is to add the behaviours and animation for the
+ * conservation page.
+ *
+ * Populate the conservation page gallery with images and corresponding image
+ * name. (add the category selection and page index for paging).
+ *
+ * Add the behaviour for the conservation pop up information panel.
+ *
+ * Author: Agowun Muhammad Altaf (A00448118), wrote the whole file.
+ */
+
+// global reference to the bar for selecting fauna or flora
 const categorySelection = document.querySelector("#categorySelection span");
-// reference to the gallery section
+// global reference to the gallery section
 const gallery = document.querySelector("#gallery");
-// reference to the page index bar
+// global reference to the page index bar
 const pageIndexBar = document.querySelector("#pageIndexBar");
-// reference to the more information panel background
+// global reference to the more information panel background
 const moreInfoBackground = document.querySelector("#moreInfoBackground");
-// reference to the more information panel
+// global reference to the more information panel
 const moreInfoPanel = moreInfoBackground.querySelector("#moreInfoPanel");
-// reference to the more information panel's header
+// global reference to the more information panel's header
 const moreInfoPanelH1 = moreInfoPanel.querySelector("h1");
-// reference to the more information panel's image wrapper
+// global reference to the more information panel's image wrapper
 const moreInfoPanelImageWrapper =
     moreInfoPanel.querySelector("#mainImgWrapper");
-// reference to the more information panel's image
+// global reference to the more information panel's image
 const moreInfoPanelImage = moreInfoPanel.querySelector("#mainImg");
-// reference to the more information panel's other image bar
+// global reference to the more information panel's other image bar
 const moreInfoPanelOtherImg = moreInfoPanel.querySelector("#otherImgs");
-// reference to the more information panel's description
+// global reference to the more information panel's description
 const moreInfoPanelDescription = moreInfoPanel.querySelector("#description");
 
-// current category default to flora since it is going to be changed on load
+// variables
+// global current category default to flora since it is going to be changed on load
 let category = "flora";
-// the current index, default to 0 on load
+// global the current index, default to 0 on load
 let speciesIndex = 0;
 
 /**
@@ -40,7 +53,7 @@ async function getPaginationInfo() {
 }
 
 /**
- * populate the page index bar after the gallery
+ * populate the page index bar after the gallery.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -85,7 +98,7 @@ function createPaginationBar(speciesLength, paginationNum) {
 }
 
 /**
- * change the category to be shown
+ * change the category for which the images is to be shown.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -136,7 +149,7 @@ function changeCategory(reqCategory) {
 changeCategory("fauna");
 
 /**
- * get the species to be displayed for that current page
+ * get the species to be displayed for that current page.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -157,7 +170,7 @@ function fetchSpeciesData(reqIndex) {
 }
 
 /**
- * add the species images and name to the respective columns
+ * add the species images and name to the respective columns.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -238,6 +251,7 @@ function populateColumns(pageContent) {
                             translateY: "10%",
                         }
                     );
+                    // animate the images into view
                     gsap.to(speciesContainer, {
                         opacity: 1,
                         scale: 1,
@@ -248,12 +262,12 @@ function populateColumns(pageContent) {
 }
 
 /**
- * append the number of column for the display dimension
+ * append the number of column for the display dimension.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  */
 function appendColumns() {
-    // get the width og the screen
+    // get the width of the screen
     const windowWidth = window.innerWidth;
     // store the number of columns to be added
     let numColumns = 1;
@@ -292,22 +306,26 @@ window.addEventListener("resize", () => {
     appendColumns();
 });
 
-Scrollbar.init(moreInfoPanel, {
-    damping: 0.1,
-    syncCallbacks: true,
-});
+// check if user is on desktop
+if (window.innerWidth > TABLET_WIDTH) {
+    // user is on desktop enable momentum scrollbar on the more information panel
+    Scrollbar.init(moreInfoPanel, {
+        damping: 0.1,
+        syncCallbacks: true,
+    });
+}
 
 /**
- * display a panel for more information on the specices
+ * display a panel for more information on the specices.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
- * @param data for the species to be dispalyed
+ * @param data data for the species to be displayed
  */
 function openMoreInfoPanel(data) {
     // update the name for the panel
     moreInfoPanelH1.textContent = data.name;
-    // update the main image
+    // update the main image in the panel
     moreInfoPanelImage.src = data.imgsURL[0];
     // set the description for that species
     moreInfoPanelDescription.innerText = data.description;
@@ -315,7 +333,7 @@ function openMoreInfoPanel(data) {
     // clear the previous images
     moreInfoPanelOtherImg.innerHTML = "";
 
-    // add the new imagess
+    // add the images in the list section below the main image
     data.imgsURL.forEach((img, i) => {
         // create the smaller image preview
         const smallImg = document.createElement("img");
@@ -336,8 +354,10 @@ function openMoreInfoPanel(data) {
                     smallImg.classList.remove("activeImg");
                 });
 
+            // set the active image class on the new image
             smallImg.classList.add("activeImg");
 
+            // change the main image
             moreInfoPanelImage.src = img;
         });
 
@@ -348,13 +368,13 @@ function openMoreInfoPanel(data) {
     // set the panel and background to visible
     gsap.set(moreInfoBackground, { display: "flex" });
 
-    // animate the the more information panel background in
+    // animate the the more information panel background into view
     gsap.timeline()
         .to(moreInfoBackground, {
             opacity: 1,
             duration: 0.3,
             ease: Circ.EaseInOut,
-        }) // animate the the more information panel in
+        }) // animate the the more information panel into view
         .fromTo(
             moreInfoPanel,
             { height: 0, duration: 0 },
@@ -367,8 +387,9 @@ function openMoreInfoPanel(data) {
         );
 }
 
+// check if user is on desktop in order to implement mouse movement behaviours
 if (window.innerWidth > MOBILE_WIDTH) {
-    // zoom into image on hover
+    // zoom into theh main image on hover
     moreInfoPanelImageWrapper.addEventListener("mouseover", () => {
         gsap.to(moreInfoPanelImage, {
             scale: 2,
@@ -376,12 +397,14 @@ if (window.innerWidth > MOBILE_WIDTH) {
         });
     });
 
-    // zoom out of image on hover
+    // zoom out of the main image on leaving the main image section
     moreInfoPanelImageWrapper.addEventListener("mouseleave", () => {
+        // bring the image back to the correct position
         gsap.to(moreInfoPanelImage, {
             top: 0,
             left: 0,
         });
+        // scale the image down to the initial image size
         gsap.to(moreInfoPanelImage, {
             scale: 1,
         });
@@ -402,10 +425,12 @@ if (window.innerWidth > MOBILE_WIDTH) {
                 moreInfoPanelImageWrapper.clientHeight / 2) /
             moreInfoPanelImageWrapper.clientHeight;
 
+        // translate the horizontal postion of the image to show the right portion
         moreInfoPanelImage.style.left = `${
             moreInfoPanelImageWrapper.clientWidth * -relativeX
         }px`;
 
+        // translate the vertical postion of the image to show the right portion
         moreInfoPanelImage.style.top = `${
             moreInfoPanelImageWrapper.clientHeight * -relativeY
         }px`;
@@ -413,17 +438,18 @@ if (window.innerWidth > MOBILE_WIDTH) {
 }
 
 /**
- * close the more information panel
+ * close the more information panel.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  */
 function closeMoreInfoPanel() {
+    // animate the the more information panel background out of view
     gsap.timeline()
         .to(moreInfoPanel, {
             height: 0,
             duration: 0.4,
             ease: Circ.EaseIn,
-        })
+        }) // animate the the more information panel out of view
         .to(
             moreInfoBackground,
             {

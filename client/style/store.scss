@@ -1,3 +1,11 @@
+/* 
+ The purpose of this file is to define the styling for the store page
+
+ Author: Agowun Muhammad Altaf (A00448118), shared styling from conservation page for item gallery part
+ Author: Mohak Shrivastava (A00445470), wrote the whole file
+*/
+
+// top section of the store page
 header {
     width: 100%;
     min-height: 60vh;
@@ -76,14 +84,14 @@ header {
     }
 }
 
+// the "Cart" button at the bottom right of the store page
 #cartBtn {
     z-index: 10;
     position: fixed;
     bottom: 0;
     right: 0;
     margin: 2em;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
+    border-radius: 1rem;
     border: none;
     padding: 1em;
     align-items: center;
@@ -95,11 +103,17 @@ header {
     cursor: pointer;
     background-color: var(--bg-color);
 
+    p {
+        font-size: x-large;
+        margin-left: 0.3em;
+    }
+
     img {
-        width: 2.5em;
+        width: 2em;
     }
 }
 
+// cart/receipt pop up
 #cart {
     background-color: var(--bg-color);
     margin: auto;
@@ -279,6 +293,7 @@ header {
     }
 }
 
+// styling apply to the image in the image list within the more information panel when it is being seen as the main image
 .activeImg {
     border: 2px solid var(--primary-color);
 }

@@ -1,5 +1,5 @@
 /**
- * The purpose of this file is to add the behaviors and animation for the index
+ * The purpose of this file is to add the behaviours and animation for the index
  * page. The index page is divided into different sections.
  *
  * Header:
@@ -10,7 +10,7 @@
  *
  * Map:
  * animate the entrance of the path and markers on the map when the map enters
- * the screen, add the markers behavior with panel sliding into view and close
+ * the screen, add the markers behaviour with panel sliding into view and close
  * button being position on the marker.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
@@ -25,143 +25,53 @@ const numHeaderDesc = document.querySelectorAll(
 ).length;
 
 // reference to DOM elements
-// reference to the header section
+// global reference to the header section
 const header = document.querySelector("header");
-// reference to the outer div that wraps the header image
+// global reference to the outer div that wraps the header image
 const headerImgContainer = header.querySelector("#img_container");
-// reference to the header image
+// global reference to the header image
 const headerImgs = headerImgContainer.querySelectorAll("img");
-// reference to the div that hold the description of the image being displayed
+// global reference to the div that hold the description of the image being displayed
 const headerDescription = header.querySelector("#description");
-// reference to the text content of the header description
+// global reference to the text content of the header description
 const headerContents = headerDescription.querySelectorAll(".text_content");
-// reference to the indicators to display which content is being shown
+// global reference to the indicators to display which content is being shown
 const indicatorBtn = headerDescription.querySelectorAll(".indicator_container");
-// reference to the progress bar for each indicators
+// global reference to the progress bar for each indicators
 const progressIndicator = headerDescription.querySelectorAll(".indicator div");
-// reference to the gallery
+// global reference to the gallery
 const gallery = document.querySelector("#gallery");
-// reference to the gallery images
+// global reference to the gallery images
 const galleryImgs = gallery.querySelectorAll("img");
-// reference to the outer div that wraps the map
+// global reference to the outer div that wraps the map
 const mapContainer = document.querySelector("#map_container");
-// reference to map image
+// global reference to map image
 const map = mapContainer.querySelector("#map");
-// reference to the markers panel
+// global reference to the markers panel
 const markersPanel = mapContainer.querySelector("#markers_panel");
-// reference to the markers panel' image
+// global reference to the markers panel' image
 const image = markersPanel.querySelector("img");
-// reference to the markers panel' header
+// global reference to the markers panel' header
 const title = markersPanel.querySelector("h1");
-// reference to the markers panel' text
+// global reference to the markers panel' text
 const description = markersPanel.querySelector("p");
-// reference to the markers panel contents
+// global reference to the markers panel contents
 const markersPanelCloseBtn = mapContainer.querySelector("#close_panel");
-// reference to the map path
+// global reference to the map path
 const path = mapContainer.querySelector("#path");
 
-// get the markers information from server (TEMPORARILY HARD CODED) TODO: REMOVE
-// const locationsInfo = [
-//     {
-//         x: 500,
-//         y: 386,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Trailhead",
-//     },
-//     {
-//         x: 640,
-//         y: 500,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Hazelnut tree",
-//     },
-//     {
-//         x: 706,
-//         y: 615,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Big Apple Tree",
-//     },
-//     {
-//         x: 775,
-//         y: 624,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Pear Tree",
-//     },
-//     {
-//         x: 790,
-//         y: 685,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Cherry-Honeysuckle Arch",
-//     },
-//     {
-//         x: 780,
-//         y: 745,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Spruce Grove",
-//     },
-//     {
-//         x: 860,
-//         y: 764,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Foundation",
-//     },
-//     {
-//         x: 955,
-//         y: 830,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Open Honeysuckle, sweet cherry",
-//     },
-
-//     {
-//         x: 1035,
-//         y: 880,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Enter Big Grove",
-//     },
-//     {
-//         x: 1010,
-//         y: 950,
-//         description: "Description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Well",
-//     },
-//     {
-//         x: 1140,
-//         y: 1000,
-//         description: "description of the image",
-//         imgUrl: "./assets/satMap.png",
-//         title: "Very Big Apple Tree",
-//     },
-//     {
-//         x: 1240,
-//         y: 990,
-//         description:
-//             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fuga, provident voluptas quas pariatur laboriosam porro atque excepturi fugit dicta",
-//         imgUrl: "./assets/satMap.png",
-//         title: "End of trail",
-//     },
-// ];
-
-// get a promise for the location info
+// global get a promise for the location info
 const locationsInfo = $.get({
     url: SERVER_URL + "/map/getMarkers",
     async: true,
 });
 
 // variables
-// reference to the markers (will be programmatically added)
+// global  reference to the markers (will be programmatically added)
 let markers;
-// index of the current header description/image
+// global index of the current header description/image
 let currHeaderContentIndex = 0;
-// stores the interval for the header content
+// global stores the interval for the header content
 let indicatorInterval;
 
 // fix issue with indicator animation lagging behind when user reenters website
@@ -177,6 +87,7 @@ gsap.ticker.lagSmoothing(false);
  * simultaneously animate all the indcators to the desired one.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index the index of the header content to be displayed
  */
 function headerState(index) {
@@ -202,7 +113,8 @@ indicatorInterval = setInterval(() => {
  * The purpose of this function is to fade out all the images and then fade in
  * the desired image.
  *
- * Authors: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index index of the desired image
  */
 function animateHeaderImg(index) {
@@ -225,7 +137,8 @@ function animateHeaderImg(index) {
  * The purpose of this function is to animate out the existing text content and
  * animate in the desired text content.
  *
- * Authors: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index index of the desired text content
  */
 function animateHeaderText(index) {
@@ -261,7 +174,8 @@ function animateHeaderText(index) {
  * The purpose of this function is to animate animate all the indicators to 0
  * and animate the indicator for the desired header content.
  *
- * Authors: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param index index of the desired indicator
  */
 function animateHeaderIndicator(index) {
@@ -336,14 +250,15 @@ galleryImgs.forEach((image, i) => {
 
 /**
  * The purpose of this function is to plot the markers on the map and draw the
- * path that connects the markers
+ * path that connects the markers.
  *
  * loops through the location infos and plot them together with a label on the
  * map. It also calls a function to assign the entrance animation of the path
  * and markers. Finally it adds a listner to monitor the screen resizing in
- * order to re-plot the markers and labels so that they are in the right place
+ * order to re-plot the markers and labels so that they are in the right place.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param locationsInfo array of information on the markers
  */
 async function plotMarkersAndPath(locationsInfo) {
@@ -385,7 +300,7 @@ async function plotMarkersAndPath(locationsInfo) {
             toggleLocationLabel(markerLabel, false);
         });
 
-        // monitor user focusing the point (use for people using tab to navigate)
+        // monitor user focusing the point (for people using tab to navigate)
         marker.addEventListener("focus", () => {
             toggleLocationLabel(markerLabel, true);
         });
@@ -517,13 +432,18 @@ function animatePathAndMarkers() {
  * If display is true then animate the marker label to appear above the marker
  * otherwise animate it to be hidden.
  *
+ * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param markerLabel the markers labeling element
  * @param display flag to add or remove label from the map
  */
 function toggleLocationLabel(markerLabel, display) {
+    // store time line for the marker label animation
     const descAnimTime = gsap.timeline();
 
+    // check whether we want to display or hide the map marker label
     if (display) {
+        // animate the marker label out
         descAnimTime.to(markerLabel, {
             translateY: "-150%",
             clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -531,6 +451,7 @@ function toggleLocationLabel(markerLabel, display) {
             ease: Circ.easeOut,
         });
     } else {
+        // animate the marker label in
         descAnimTime.to(markerLabel, {
             translateY: "-110%",
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -546,6 +467,7 @@ function toggleLocationLabel(markerLabel, display) {
  * paragraph.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param locationInfo information on the markers location
  */
 function upadateMarkerPanel(locationInfo) {
@@ -561,12 +483,13 @@ function upadateMarkerPanel(locationInfo) {
 
 /**
  * The purpose of this function is to toggle the both the markers panel and
- * close button in or out of view
+ * close button in or out of view.
  *
  * It translate the marker panel into view or out of view. It animate the scale
  * of the marker panel close button to 1 if display is true and 0 otherwise.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
+ *
  * @param display boolean value indicate whether to display or hide panel
  */
 function toggleMarkerPanel(display) {

@@ -1,3 +1,9 @@
+/* 
+ The purpose of this file is to define the styling for the store page
+
+ Author: Agowun Muhammad Altaf (A00448118), shared styling from conservation page for item gallery part
+ Author: Mohak Shrivastava (A00445470), wrote the whole file
+*/
 header {
   width: 100%;
   min-height: 60vh;
@@ -80,8 +86,7 @@ header div p {
   bottom: 0;
   right: 0;
   margin: 2em;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
+  border-radius: 1rem;
   border: none;
   padding: 1em;
   align-items: center;
@@ -91,8 +96,12 @@ header div p {
   cursor: pointer;
   background-color: var(--bg-color);
 }
+#cartBtn p {
+  font-size: x-large;
+  margin-left: 0.3em;
+}
 #cartBtn img {
-  width: 2.5em;
+  width: 2em;
 }
 
 #cart {

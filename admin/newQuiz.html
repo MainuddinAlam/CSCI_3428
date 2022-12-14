@@ -7,83 +7,100 @@
 <!--Important headers-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add new quiz question</title>
-    <!-- jQuery library for DOM manipulation -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.1.min.js"
-      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/random-words@1.2.0/index.min.js"></script>
-    <!-- Programmer defined default css -->
-    <link rel="stylesheet" href="./style/style.css" />
-    <link rel="stylesheet" href="./style/newQuiz.css" />
-    <script src="./script/newQuiz.js"></script>
-  </head>
-  <body>
-    <!--Container containing the whole page-->
-    <div id="container">
-      <div id="content">
-        <h1>ADD A NEW MULTIPLE-CHOICE QUESTION</h1>
-        <!--Add question-->
-        <section class="pageParts">
-          <p id="questionLabel">Enter the question</p>
-          <input
-            type="text"
-            id="question"
-            placeholder="Enter the question"
-            onfocus="checkFocus()"
-          />
-        </section>
-        <!--Add options of the question-->
-        <section class="pageParts">
-          <p id="optionsLabel">Enter your options</p>
-          <input
-            type="text"
-            id="options"
-            placeholder="Enter Option #1"
-            onfocus="checkFocus()"
-          />
-        </section>
-        <!--Buttons to save, add and clear options respectively-->
-        <section>
-          <button style="background-color: #c82333" onclick="saveOptions()">
-            Save Option
-          </button>
-          <button style="background-color: #0069d9" onclick="generateOptions()">
-            Generate Option
-          </button>
-          <button style="background-color: #c82333" onclick="clearOptions()">
-            Clear Options
-          </button>
-        </section>
-        <!--Add correct answer-->
-        <section class="pageParts">
-          <p id="correctAnsLabel">Enter the correct answer</p>
-          <input
-            type="text"
-            id="correctAns"
-            placeholder="Answer should match exactly with one of the options"
-            onfocus="checkFocus()"
-          />
-        </section>
-        <!--Button to upload and clear question-->
-        <section class="pageParts">
-          <button style="background-color: #c82333" onclick="uploadToServer()">
-            Upload
-          </button>
-          <button style="background-color: #0069d9" onclick="clearQuestion()">
-            Clear
-          </button>
-        </section>
-        <section style="display: none" id="message">
-          <p>Your question has been added.</p>
-        </section>
-      </div>
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add new quiz question</title>
+        <!-- jQuery library for DOM manipulation -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/random-words@1.2.0/index.min.js"></script>
+        <!-- Programmer defined default css -->
+        <link rel="stylesheet" href="./style/style.css" />
+        <!-- Programmer defined css for this page -->
+        <link rel="stylesheet" href="./style/newQuiz.css" />
+        <script src="./script/newQuiz.js" defer></script>
+    </head>
+    <body>
+        <!--Container containing the whole page-->
+        <div id="container">
+            <div id="content">
+                <h1>ADD A NEW MULTIPLE-CHOICE QUESTION</h1>
+                <!--Add question-->
+                <section class="pageParts">
+                    <p id="questionLabel">Enter the question</p>
+                    <input
+                        type="text"
+                        id="question"
+                        placeholder="Enter the question"
+                        onfocus="checkFocus()"
+                    />
+                </section>
+                <!--Add options of the question-->
+                <section class="pageParts">
+                    <p id="optionsLabel">Enter your options</p>
+                    <input
+                        type="text"
+                        id="options"
+                        placeholder="Enter Option #1"
+                        onfocus="checkFocus()"
+                    />
+                    <ul id="previewOptions"></ul>
+                </section>
+                <!--Buttons to save, add and clear options respectively-->
+                <section>
+                    <button
+                        style="background-color: #01a66f"
+                        onclick="saveOptions()"
+                    >
+                        Save Option
+                    </button>
+                    <button
+                        style="background-color: #0069d9"
+                        onclick="generateOptions()"
+                    >
+                        Generate Option
+                    </button>
+                    <button
+                        style="background-color: #c82333"
+                        onclick="clearOptions()"
+                    >
+                        Clear Options
+                    </button>
+                </section>
+                <!--Add correct answer-->
+                <section class="pageParts">
+                    <p id="correctAnsLabel">Enter the correct answer</p>
+                    <input
+                        type="text"
+                        id="correctAns"
+                        placeholder="Answer should match exactly with one of the options"
+                        onfocus="checkFocus()"
+                    />
+                </section>
+                <!--Button to upload and clear question-->
+                <section class="pageParts">
+                    <button
+                        style="background-color: #01a66f"
+                        onclick="uploadToServer()"
+                    >
+                        Upload
+                    </button>
+                    <button
+                        style="background-color: #c82333"
+                        onclick="clearQuestion()"
+                    >
+                        Clear Question
+                    </button>
+                </section>
+                <section style="display: none" id="message">
+                    <p>Your question has been added.</p>
+                </section>
+            </div>
+        </div>
+    </body>
 </html>

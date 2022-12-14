@@ -1,3 +1,8 @@
+/* 
+ The purpose of this file is to define the styling for the newSpecies page within the admin folder
+
+ Author: Agowun Muhammad Altaf (A00448118), wrote the whole file
+*/
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap");
 * {
   box-sizing: border-box;
@@ -63,4 +68,15 @@
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
+}
+#form button {
+  padding: 0.5em 1em;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: #01a66f;
+}
+
+button:hover {
+  filter: brightness(90%);
 }/*# sourceMappingURL=newSpecies.css.map */

@@ -4,7 +4,7 @@
  * checks and grades each question. Finally it displays the grades to
  * the user.
  *
- *  Author: Mainuddin Alam Irteja (A00446752)
+ * Author: Mainuddin Alam Irteja (A00446752)
  */
 
 //constants for the quiz div
@@ -242,7 +242,7 @@ function checkAnswers() {
  *
  * The function calculate the percentage of correct answers. It then
  * gets the id of the div where the percentage will be shown. Finally, we
- * hid the div containing the quiz and display the div containing the results.
+ * hide the div containing the quiz and display the div containing the results.
  *
  * Author: Mainuddin Alam Irteja (A00446752)
  *
@@ -252,16 +252,15 @@ function displayResults(correctAns) {
     //Calculate quiz percentage
     let percentage = (correctAns / quizInfo.length) * 100;
 
-    //Hid the quiz div and display the results div
+    //Hide the quiz div and display the results div
     quizDiv.style.display = "none";
     resultsDiv.style.display = "";
 
     //Add the percentage to the div
     marks.innerHTML = "You scored: " + percentage.toFixed(2) + "%";
 
-    const jsConfetti = new JSConfetti();
-
-    jsConfetti.addConfetti({
+    // create a JSConfetti object to display the confetti based on the score
+    new JSConfetti().addConfetti({
         emojis: ["🍁", "🍏", "🍎", "🍀", "☘️"],
         emojiSize: 30,
         confettiNumber: Math.round(percentage) * 3,

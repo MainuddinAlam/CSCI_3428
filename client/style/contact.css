@@ -1,3 +1,14 @@
+/** 
+    Purpose: The purpose of this scss file is to provide the styles for the
+    Contact Us page for the French Village website.
+
+    Author: Joshua Kivaria (A00450062). Joshua Kivaria added the styles 
+    for header and contact parts of the Contact Us Page of the French
+    village website.
+    Author: Mainuddin Alam Irteja (A00446752). Mainuddin Alam Irteja added the
+    necessary parts to so that a "Thank you" message appears when sending
+    a message.
+ **/
 #header {
   width: 100%;
   min-height: 60vh;
@@ -69,7 +80,7 @@
   width: 100%;
   border-radius: 1rem;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 #contactPart .submitBtn {
   width: 60%;
@@ -116,6 +127,7 @@
   font-size: large;
 }
 
+/* Styles for tablets and smartphones */
 @media only screen and (max-width: 768px) {
   #header {
     min-height: 40vh;
@@ -140,4 +152,4 @@
   #contactPart #content textarea {
     width: 100%;
   }
-}
+}/*# sourceMappingURL=contact.css.map */

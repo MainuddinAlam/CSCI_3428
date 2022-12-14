@@ -1,3 +1,10 @@
+/* 
+ The purpose of this file is to define the styling for the conservation page
+
+ Author: Agowun Muhammad Altaf (A00448118), wrote the whole file
+*/
+
+// top section of the conservation page
 header {
     width: 100%;
     min-height: 60vh;
@@ -24,6 +31,7 @@ header {
     }
 }
 
+// bar below the header section to select the category
 #categorySelection {
     width: 100%;
     display: flex;
@@ -60,6 +68,7 @@ header {
     }
 }
 
+// section populated with the images of the species
 #gallery {
     width: 100%;
     display: flex;
@@ -110,6 +119,7 @@ header {
     }
 }
 
+// index bar at the after the images to change the index
 #pageIndexBar {
     background: rgba($color: #000000, $alpha: 0.03);
     margin: 1em auto;
@@ -219,6 +229,7 @@ header {
     }
 }
 
+// styling apply to the image in the image list within the more information panel when it is being seen as the main image
 .activeImg {
     border: 2px solid var(--primary-color);
 }

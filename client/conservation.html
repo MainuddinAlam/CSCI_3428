@@ -67,6 +67,7 @@
         </nav>
 
         <main id="main_content">
+            <!-- top section of the conservation page -->
             <header>
                 <div id="headerContent">
                     <h1>Conservation</h1>
@@ -76,6 +77,8 @@
                     </p>
                 </div>
             </header>
+
+            <!-- bar below header section to select the category -->
             <div id="categorySelection">
                 <span>
                     <button onclick="changeCategory('fauna')">
@@ -88,7 +91,10 @@
                     </button>
                 </span>
             </div>
+
+            <!-- populated with the images of the species -->
             <section id="gallery"></section>
+            <!-- populated with buttons to change the pagination index -->
             <div id="pageIndexBar"></div>
 
             <!-- default footer -->
@@ -144,8 +150,12 @@
                 </div>
             </footer>
         </main>
+
+        <!-- background for the more information panel for the species -->
         <div id="moreInfoBackground">
+            <!-- the panel for the more information on the species -->
             <div id="moreInfoPanel">
+                <!-- more information close button -->
                 <button
                     id="moreInfoCloseBtn"
                     title="close"
@@ -153,12 +163,18 @@
                 >
                     X
                 </button>
+                <!-- display the name of the species -->
                 <h1></h1>
+                <!-- warpper for the main image being viewed -->
                 <span id="mainImgWrapper">
+                    <!-- populated with the main image being viewed -->
                     <img id="mainImg" src="" />
                 </span>
+                <!-- populated with all the images of the species -->
                 <div id="otherImgs"></div>
+                <!-- display the description of the species -->
                 <p id="description"></p>
+                <!-- mention that the images are source from inaturalist -->
                 <h5>
                     Image obtained from
                     <a href="https://www.inaturalist.org/" target="_blank"

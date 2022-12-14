@@ -1,3 +1,8 @@
+<!-- 
+    Define the markup of the new species page within the admin fodler
+
+    Author: Agowun Muhammad Altaf (A00448118)
+ -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,9 +21,13 @@
     </head>
     <body>
         <div id="form">
+            <!-- populated with the images of the specie to be uploaded -->
             <div class="preview"></div>
+
             <label for="imageInput" id="imageInputLabel"
                 >Add Images
+
+                <!-- hidden file input to upload images -->
                 <input
                     hidden
                     type="file"
@@ -52,6 +61,7 @@
 
             <button id="upload">Upload</button>
 
+            <!-- populated with the progression of uploading the images -->
             <div id="progress"></div>
         </div>
     </body>

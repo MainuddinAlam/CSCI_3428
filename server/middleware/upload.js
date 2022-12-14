@@ -1,3 +1,11 @@
+/**
+ * The purpose of this file is to create a middleware for when the admin uploads
+ * an image.
+ *
+ * Author: Agowun Muhammad Altaf (A00448118), wrote the whole file.
+ */
+
+// import the multer library to save image on the database
 const multer = require("multer");
 
 /**
@@ -21,4 +29,5 @@ function upload(subdoc) {
     return multer({ storage: storage });
 }
 
+// export the middleware to allow other files to use it to upload images to the server
 module.exports = upload;

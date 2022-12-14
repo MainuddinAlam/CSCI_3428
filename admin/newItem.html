@@ -1,3 +1,9 @@
+<!-- 
+    Define the markup of the index page within the admin fodler
+
+    Author: Agowun Muhammad Altaf (A00448118), shared the markup from newSpecies file 
+    Author: Anmol Bhatla (A00441358), wrote the whole file and adapted the markup shared from newSpecies file to newItem file
+ -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,9 +22,13 @@
     </head>
     <body>
         <div id="form">
+            <!-- populated with the images of the item to be uploaded -->
             <div class="preview"></div>
+
             <label for="imageInput" id="imageInputLabel"
                 >Add Images
+
+                <!-- hidden file input to upload images -->
                 <input
                     hidden
                     type="file"
@@ -47,6 +57,7 @@
 
             <button id="upload">Upload</button>
 
+            <!-- populated with the progression of uploading the images -->
             <div id="progress"></div>
         </div>
     </body>

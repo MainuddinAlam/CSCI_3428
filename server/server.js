@@ -6,9 +6,13 @@
  * Author: Mainuddin Alam Irteja (A00446752)
  */
 
+// import express library to create a router to connect to the main server file
 const express = require("express");
+// import the library used to interact with the database
 const mongoose = require("mongoose");
+// create the server
 const server = express();
+// store the port for the server to be run on
 const port = 3026;
 
 // refer to the routes created in other files

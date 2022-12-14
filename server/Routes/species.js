@@ -1,6 +1,20 @@
+/**
+ * The purpose of this file is to define the code for the request to the route
+ * http://140.184.230.209:3026/server/species/...
+ *
+ * - manage the species in the gallery of the website, add new species
+ * - provide access to information on the species at the French Village
+ *
+ * Author: Agowun Muhammad Altaf (A00448118), wrote the whole file
+ */
+
+// import express library to create a router to connect to the main server file
 const express = require("express");
+// create the router
 const router = express.Router();
+// import the species model to interact with the database, species collection
 const Species = require("../models/speciesModel");
+// import the image uploading middleware
 const upload = require("../middleware/upload");
 
 // number of species data to send per request

@@ -1,3 +1,10 @@
+/* 
+ The purpose of this file is to define the styling for the index page within the admin folder
+
+ Author: Agowun Muhammad Altaf (A00448118), wrote the whole file
+*/
+
+// import the Quicksand font style from google fonts https://fonts.google.com/specimen/Quicksand
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap");
 
 * {
@@ -21,6 +28,7 @@ h1 {
         background-color: #01a66f;
         color: black;
         padding: 0.5em;
+        margin: 0.3em;
         border-radius: 1rem;
         text-decoration: none;
         text-align: center;

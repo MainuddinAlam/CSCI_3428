@@ -1,6 +1,21 @@
+/**
+ * The purpose of this file is to define the code for the request to the route
+ * http://140.184.230.209:3026/server/store/...
+ *
+ * - manage the items in the store of the website, add new item
+ * - provide access to the items being sold on the store
+ *
+ * Author: Agowun Muhammad Altaf (A00448118), shared the code from species route
+ * Author: Anmol Bhatla (A00441358), wrote the whole file and adapted the shared code from the species route to the store route
+ */
+
+// import express library to create a router to connect to the main server file
 const express = require("express");
+// create the router
 const router = express.Router();
+// import the item model to interact with the database, items collection
 const Item = require("../models/itemModel");
+// import the image uploading middleware
 const upload = require("../middleware/upload");
 
 // upload the images for the item
@@ -11,7 +26,7 @@ router.post("/uploadImg", upload("items").single("image"), (req, res) => {
 /**
  * Add a new item to the database
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Anmol Bhatla (A00441358)
  */
 router.post("/add", async (req, res) => {
     try {
@@ -28,7 +43,7 @@ router.post("/add", async (req, res) => {
 /**
  * get a list of item first image, name and price
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Anmol Bhatla (A00441358)
  */
 router.post("/getitems", async (req, res) => {
     const itemList = await Item.find() // find all the items
@@ -43,7 +58,7 @@ router.post("/getitems", async (req, res) => {
  *
  * itemId: objectId of the item
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Anmol Bhatla (A00441358)
  */
 router.get("/itemFullInfo/:itemId", async (req, res) => {
     // get the value in the paramenters (itemId)

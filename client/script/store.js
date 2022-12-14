@@ -1,49 +1,65 @@
-// reference to the store section
+/**
+ * The purpose of this file is to add the behaviours and animation for the
+ * store page.
+ *
+ * Populate the store page with the items' images and corresponding item
+ * name and price.
+ *
+ * Add the behaviour for the store pop up information panel.
+ *
+ * Add the behaviour for the cart feature.
+ *
+ * Author: Agowun Muhammad Altaf (A00448118), shared code from conservation page for the item gallery part
+ * Author: Mohak Shrivastava (A00445470), wrote the whole file, and adapted the code shared from the conservation page to store page
+ */
+
+// global reference to the store section
 const store = document.querySelector("#store");
-// reference to the more information panel background
+// global reference to the more information panel background
 const moreInfoBackground = document.querySelector("#moreInfoBackground");
-// reference to the more information panel
+// global reference to the more information panel
 const moreInfoPanel = moreInfoBackground.querySelector("#moreInfoPanel");
-// reference to the more information panel's header
+// global reference to the more information panel's header
 const moreInfoPanelH1 = moreInfoPanel.querySelector("h1");
-// reference to the more information panel's image
+// global reference to the more information panel's image
 const moreInfoPanelImage = moreInfoPanel.querySelector("#mainImg");
-// reference to the more information panel's other image bar
+// global reference to the more information panel's other image bar
 const moreInfoPanelOtherImg = moreInfoPanel.querySelector("#otherImgs");
-// reference to the more information panel's description
+// global reference to the more information panel's description
 const moreInfoPanelDescription = moreInfoPanel.querySelector("#description");
-// reference to the more information panel's price
+// global reference to the more information panel's price
 const moreInfoPanelPrice = moreInfoPanel.querySelector("#price");
-// reference to the more information panel's item quantity
+// global reference to the more information panel's item quantity
 const moreInfoPanelQuantity = moreInfoPanel.querySelector("#itemQuantity");
-// reference to the more information panel's add to cart button
+// global reference to the more information panel's add to cart button
 const moreInfoPanelAddtoCart = moreInfoPanel.querySelector("#addToCart");
-// reference to the cart button
+// global reference to the cart button
 const cartBtn = document.querySelector("#cartBtn");
-// reference to the cart modal
+// global reference to the cart modal
 const cart = document.querySelector("#cart");
-// reference to the cart modal
+// global reference to the cart modal
 const cartClose = cart.querySelector("#closeCart");
-// reference to the cart modal
+// global reference to the cart modal
 const cartPurchase = cart.querySelector("#purcahse");
-// reference to the cart items list
+// global reference to the cart items list
 const cartItemList = cart.querySelector("#cartItems");
-// reference to the cart items total price
+// global reference to the cart items total price
 const cartTotalPrice = cart.querySelector("#totalPrice");
 
-// store the items id to be use in the cart page and the number of the item
+// global store the items id to be use in the cart page and the number of the item
 const cartItems = {};
-// store the list of items
+// global store the list of items
 let items;
-// store the id of the item being viewed
+// global store the id of the item being viewed
 let itemId;
-// flag to know whether the cart is empty or not
+// global flag to know whether the cart is empty or not
 let cartEmpty;
 
 /**
- * get the items to be displayed
+ * get the items to be displayed.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118), shared code from conservation page
+ * Author: Mohak Shrivastava (A00445470), adapted and wrote the code
  */
 function fetchItemsData() {
     // fetch the items data
@@ -55,11 +71,12 @@ function fetchItemsData() {
 }
 
 /**
- * add the items images and name to the respective columns
+ * add the items images and name to the respective columns.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118), shared code from conservation page
+ * Author: Mohak Shrivastava (A00445470), adapted and wrote the code
  *
- * @param items the content to be displayed
+ * @param items the item to be displayed
  */
 function populateColumns(items) {
     // reference to the columns in the store section
@@ -153,9 +170,10 @@ function populateColumns(items) {
 }
 
 /**
- * append the number of column for the display dimension
+ * append the number of column for the display dimension.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118), shared code from conservation page
+ * Author: Mohak Shrivastava (A00445470), adapted and wrote the code
  */
 function appendColumns() {
     // get the width of the screen
@@ -207,9 +225,10 @@ if (window.innerWidth > TABLET_WIDTH) {
 }
 
 /**
- * display a panel for more information on the item
+ * display a panel for more information on the items.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118), shared code from conservation page
+ * Author: Mohak Shrivastava (A00445470), adapted and wrote the code
  *
  * @param data for the item to be dispalyed
  */
@@ -283,9 +302,9 @@ function openMoreInfoPanel(data) {
 }
 
 /**
- * add item to both cartItem array and session storage
+ * add item to both cartItem array and session storage.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Mohak Shrivastava (A00445470)
  */
 function addItemToCart() {
     if (itemId.length != 0) {
@@ -297,9 +316,9 @@ function addItemToCart() {
 }
 
 /**
- * remove 1 item to both cartItem array and session storage
+ * remove 1 item to both cartItem array and session storage.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Mohak Shrivastava (A00445470)
  */
 function decrementItemInCart() {
     if (itemId.length != 0) {
@@ -316,9 +335,10 @@ function decrementItemInCart() {
 }
 
 /**
- * close the more information panel
+ * close the more information panel.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Agowun Muhammad Altaf (A00448118), shared code from conservation page
+ * Author: Mohak Shrivastava (A00445470), adapted and wrote the code
  */
 function closeMoreInfoPanel() {
     // animate the the more information panel background out of view
@@ -359,9 +379,9 @@ cartBtn.addEventListener("click", () => {
 
 /**
  * update the content of the cart:
- * update the list of items in the cart pop up
+ * update the list of items in the cart pop up and flag whether it is empty or not.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Mohak Shrivastava (A00445470)
  */
 function updateCart() {
     // set the flag for empty cart to false by default
@@ -446,9 +466,9 @@ cartPurchase.addEventListener("click", () => {
 });
 
 /**
- * calculate the total price for all items in the cart
+ * calculate the total price for all items in the cart.
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Mohak Shrivastava (A00445470)
  */
 function updateTotalPrice() {
     // the default initial price for the item to be 0

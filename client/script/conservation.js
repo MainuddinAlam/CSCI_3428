@@ -1,39 +1,41 @@
 /**
- * The purpose of this file is to add the behaviors and animation for the
+ * The purpose of this file is to add the behaviours and animation for the
  * conservation page.
- * Populate the conservation page gallery with images and corresponding image
- * name. (add the category selection and page index for paging)
- * Add the behaviour for the conservation pop up information panel
  *
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Populate the conservation page gallery with images and corresponding image
+ * name. (add the category selection and page index for paging).
+ *
+ * Add the behaviour for the conservation pop up information panel.
+ *
+ * Author: Agowun Muhammad Altaf (A00448118), wrote the whole file.
  */
 
-// reference to the bar for selecting fauna or flora
+// global reference to the bar for selecting fauna or flora
 const categorySelection = document.querySelector("#categorySelection span");
-// reference to the gallery section
+// global reference to the gallery section
 const gallery = document.querySelector("#gallery");
-// reference to the page index bar
+// global reference to the page index bar
 const pageIndexBar = document.querySelector("#pageIndexBar");
-// reference to the more information panel background
+// global reference to the more information panel background
 const moreInfoBackground = document.querySelector("#moreInfoBackground");
-// reference to the more information panel
+// global reference to the more information panel
 const moreInfoPanel = moreInfoBackground.querySelector("#moreInfoPanel");
-// reference to the more information panel's header
+// global reference to the more information panel's header
 const moreInfoPanelH1 = moreInfoPanel.querySelector("h1");
-// reference to the more information panel's image wrapper
+// global reference to the more information panel's image wrapper
 const moreInfoPanelImageWrapper =
     moreInfoPanel.querySelector("#mainImgWrapper");
-// reference to the more information panel's image
+// global reference to the more information panel's image
 const moreInfoPanelImage = moreInfoPanel.querySelector("#mainImg");
-// reference to the more information panel's other image bar
+// global reference to the more information panel's other image bar
 const moreInfoPanelOtherImg = moreInfoPanel.querySelector("#otherImgs");
-// reference to the more information panel's description
+// global reference to the more information panel's description
 const moreInfoPanelDescription = moreInfoPanel.querySelector("#description");
 
 // variables
-// current category default to flora since it is going to be changed on load
+// global current category default to flora since it is going to be changed on load
 let category = "flora";
-// the current index, default to 0 on load
+// global the current index, default to 0 on load
 let speciesIndex = 0;
 
 /**
@@ -51,7 +53,7 @@ async function getPaginationInfo() {
 }
 
 /**
- * populate the page index bar after the gallery
+ * populate the page index bar after the gallery.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -96,7 +98,7 @@ function createPaginationBar(speciesLength, paginationNum) {
 }
 
 /**
- * change the category for which the images is to be shown
+ * change the category for which the images is to be shown.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -147,7 +149,7 @@ function changeCategory(reqCategory) {
 changeCategory("fauna");
 
 /**
- * get the species to be displayed for that current page
+ * get the species to be displayed for that current page.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -168,7 +170,7 @@ function fetchSpeciesData(reqIndex) {
 }
 
 /**
- * add the species images and name to the respective columns
+ * add the species images and name to the respective columns.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -260,7 +262,7 @@ function populateColumns(pageContent) {
 }
 
 /**
- * append the number of column for the display dimension
+ * append the number of column for the display dimension.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  */
@@ -314,7 +316,7 @@ if (window.innerWidth > TABLET_WIDTH) {
 }
 
 /**
- * display a panel for more information on the specices
+ * display a panel for more information on the specices.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -436,7 +438,7 @@ if (window.innerWidth > MOBILE_WIDTH) {
 }
 
 /**
- * close the more information panel
+ * close the more information panel.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  */

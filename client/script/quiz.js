@@ -4,7 +4,7 @@
  * checks and grades each question. Finally it displays the grades to
  * the user.
  *
- *  Author: Mainuddin Alam Irteja (A00446752)
+ * Author: Mainuddin Alam Irteja (A00446752)
  */
 
 //constants for the quiz div

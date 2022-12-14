@@ -1,5 +1,5 @@
 /**
- * The purpose of this file is to add the behaviors and animation that are
+ * The purpose of this file is to add the behaviours and animation that are
  * shared by all pages.
  *
  * - Behaviours and animation for the naviagation bar
@@ -12,44 +12,44 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // reference to DOM element
-// reference to the navbar
+// global reference to the navbar
 const navbar = document.querySelector("nav");
-// reference to the main document use for adding the momentum scrollbar
+// global reference to the main document use for adding the momentum scrollbar
 const main = document.querySelector("main");
-// reference to the menu list to be hidden when on mobile
+// global reference to the menu list to be hidden when on mobile
 const menu = navbar.querySelector("#menu");
-// reference to the links of the pages
+// global reference to the links of the pages
 const menuLinks = navbar.querySelector("ul");
-// reference to the menu button when on mobile
+// global reference to the menu button when on mobile
 const menuText = menu.querySelector("p");
 
 // constant
-// server url
+// global server url
 const SERVER_URL = "http://140.184.230.209:3026";
 
-// tablet width
+// global tablet width
 const TABLET_WIDTH = 768;
-// mobile width
+// global mobile width
 const MOBILE_WIDTH = 640;
 
 // variable
-// keep track of previous scroll position
+// global keep track of previous scroll position
 let scrollPosition = 0;
-// flag if the menu is open
+// global flag if the menu is open
 let isMenuOpen = false;
-// store the reference for the scroll behaviour
+// global store the reference for the scroll behaviour
 let bodyScrollBar;
 
 /**
  * add the smooth scrolling effect to every page that the script is run in,
- * provided the user is on desktop
+ * provided the user is on desktop.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
  * @param element the HTML element to which to add the smooth scrolling behaviour
  */
 function enableSmoothScroll(element) {
-    // check if user is on decktop to disable smooth scrolling
+    // check if user is on desktop to enable smooth scrolling
     if (window.innerWidth > TABLET_WIDTH) {
         // remove any smooth scrollbar instance before
         Scrollbar.destroyAll();
@@ -60,6 +60,7 @@ function enableSmoothScroll(element) {
             syncCallbacks: true,
         });
 
+        // inform GSAP about the change in the scroll to do scroll animations
         ScrollTrigger.scrollerProxy(element, {
             scrollTop(value) {
                 if (arguments.length) {
@@ -69,10 +70,12 @@ function enableSmoothScroll(element) {
             },
         });
 
+        // monitor the scroll from the library
         bodyScrollBar.addListener(ScrollTrigger.update);
 
         ScrollTrigger.defaults({ scroller: element });
 
+        // monitor the scroll to decide whether to display or hide the nav bar
         bodyScrollBar.addListener((status) => {
             // get the scroll position on scroll
             const scrollY = status.offset.y;

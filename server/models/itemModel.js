@@ -1,11 +1,11 @@
 /**
- * define how the item object is structured and what the keys of the item object
- * stores.
+ * purpose of this file is to define how the item object is structured and what
+ * the keys of the item object stores.
  *
- * Author: Anmol
- * Author: Agowun Muhammad Altaf (A00448118)
+ * Author: Anmol Bhatla (A00441358), wrote the whole file.
  */
 
+// import the library used to create the schema and model
 const mongoose = require("mongoose");
 
 // create the schema to be use to represent an item in the database
@@ -38,5 +38,5 @@ const itemSchema = new mongoose.Schema(
     }
 );
 
-// export the model created from the above schema so thot other files can modify the items object on the database
+// export the model created from the above schema so that other files can modify the items object on the database
 module.exports = mongoose.model("item", itemSchema);

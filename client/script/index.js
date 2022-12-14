@@ -1,5 +1,5 @@
 /**
- * The purpose of this file is to add the behaviors and animation for the index
+ * The purpose of this file is to add the behaviours and animation for the index
  * page. The index page is divided into different sections.
  *
  * Header:
@@ -10,7 +10,7 @@
  *
  * Map:
  * animate the entrance of the path and markers on the map when the map enters
- * the screen, add the markers behavior with panel sliding into view and close
+ * the screen, add the markers behaviour with panel sliding into view and close
  * button being position on the marker.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
@@ -25,53 +25,53 @@ const numHeaderDesc = document.querySelectorAll(
 ).length;
 
 // reference to DOM elements
-// reference to the header section
+// global reference to the header section
 const header = document.querySelector("header");
-// reference to the outer div that wraps the header image
+// global reference to the outer div that wraps the header image
 const headerImgContainer = header.querySelector("#img_container");
-// reference to the header image
+// global reference to the header image
 const headerImgs = headerImgContainer.querySelectorAll("img");
-// reference to the div that hold the description of the image being displayed
+// global reference to the div that hold the description of the image being displayed
 const headerDescription = header.querySelector("#description");
-// reference to the text content of the header description
+// global reference to the text content of the header description
 const headerContents = headerDescription.querySelectorAll(".text_content");
-// reference to the indicators to display which content is being shown
+// global reference to the indicators to display which content is being shown
 const indicatorBtn = headerDescription.querySelectorAll(".indicator_container");
-// reference to the progress bar for each indicators
+// global reference to the progress bar for each indicators
 const progressIndicator = headerDescription.querySelectorAll(".indicator div");
-// reference to the gallery
+// global reference to the gallery
 const gallery = document.querySelector("#gallery");
-// reference to the gallery images
+// global reference to the gallery images
 const galleryImgs = gallery.querySelectorAll("img");
-// reference to the outer div that wraps the map
+// global reference to the outer div that wraps the map
 const mapContainer = document.querySelector("#map_container");
-// reference to map image
+// global reference to map image
 const map = mapContainer.querySelector("#map");
-// reference to the markers panel
+// global reference to the markers panel
 const markersPanel = mapContainer.querySelector("#markers_panel");
-// reference to the markers panel' image
+// global reference to the markers panel' image
 const image = markersPanel.querySelector("img");
-// reference to the markers panel' header
+// global reference to the markers panel' header
 const title = markersPanel.querySelector("h1");
-// reference to the markers panel' text
+// global reference to the markers panel' text
 const description = markersPanel.querySelector("p");
-// reference to the markers panel contents
+// global reference to the markers panel contents
 const markersPanelCloseBtn = mapContainer.querySelector("#close_panel");
-// reference to the map path
+// global reference to the map path
 const path = mapContainer.querySelector("#path");
 
-// get a promise for the location info
+// global get a promise for the location info
 const locationsInfo = $.get({
     url: SERVER_URL + "/map/getMarkers",
     async: true,
 });
 
 // variables
-// reference to the markers (will be programmatically added)
+// global  reference to the markers (will be programmatically added)
 let markers;
-// index of the current header description/image
+// global index of the current header description/image
 let currHeaderContentIndex = 0;
-// stores the interval for the header content
+// global stores the interval for the header content
 let indicatorInterval;
 
 // fix issue with indicator animation lagging behind when user reenters website
@@ -250,12 +250,12 @@ galleryImgs.forEach((image, i) => {
 
 /**
  * The purpose of this function is to plot the markers on the map and draw the
- * path that connects the markers
+ * path that connects the markers.
  *
  * loops through the location infos and plot them together with a label on the
  * map. It also calls a function to assign the entrance animation of the path
  * and markers. Finally it adds a listner to monitor the screen resizing in
- * order to re-plot the markers and labels so that they are in the right place
+ * order to re-plot the markers and labels so that they are in the right place.
  *
  * Author: Agowun Muhammad Altaf (A00448118)
  *
@@ -300,7 +300,7 @@ async function plotMarkersAndPath(locationsInfo) {
             toggleLocationLabel(markerLabel, false);
         });
 
-        // monitor user focusing the point (use for people using tab to navigate)
+        // monitor user focusing the point (for people using tab to navigate)
         marker.addEventListener("focus", () => {
             toggleLocationLabel(markerLabel, true);
         });
@@ -438,9 +438,12 @@ function animatePathAndMarkers() {
  * @param display flag to add or remove label from the map
  */
 function toggleLocationLabel(markerLabel, display) {
+    // store time line for the marker label animation
     const descAnimTime = gsap.timeline();
 
+    // check whether we want to display or hide the map marker label
     if (display) {
+        // animate the marker label out
         descAnimTime.to(markerLabel, {
             translateY: "-150%",
             clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -448,6 +451,7 @@ function toggleLocationLabel(markerLabel, display) {
             ease: Circ.easeOut,
         });
     } else {
+        // animate the marker label in
         descAnimTime.to(markerLabel, {
             translateY: "-110%",
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -479,7 +483,7 @@ function upadateMarkerPanel(locationInfo) {
 
 /**
  * The purpose of this function is to toggle the both the markers panel and
- * close button in or out of view
+ * close button in or out of view.
  *
  * It translate the marker panel into view or out of view. It animate the scale
  * of the marker panel close button to 1 if display is true and 0 otherwise.

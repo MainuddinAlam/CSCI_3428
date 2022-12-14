@@ -1,7 +1,9 @@
 /*
-Styles for the newQuiz.html page
+Purpose: The purpose of this css file is to add the 
+styles for the newQuiz.html page
 
-Author: Mainuddin Alam Irteja (A00446752)
+Author: Mainuddin Alam Irteja (A00446752). Mainuddin Alam Irteja wrote
+this file to add the styles for the newQuiz.html page.
 
 */
 
@@ -9,76 +11,76 @@ Author: Mainuddin Alam Irteja (A00446752)
 Styles using html elements
 */
 body {
-    width: 100%;
-    background-color: #f7f8fc;
+  width: 100%;
+  background-color: #f7f8fc;
 }
 h1 {
-    padding: 1%;
+  padding: 1%;
 }
 section {
-    font-size: 150%;
+  font-size: 150%;
 }
 p {
-    margin: 0.7%;
+  margin: 0.7%;
 }
 
 input {
-    width: 70%;
-    height: 4vh;
-    background-color: #f7f8fc;
-    border-radius: 0.5rem;
-    padding: 0.3rem;
+  width: 70%;
+  height: 4vh;
+  background-color: #f7f8fc;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
 }
 
 button {
-    margin-top: 1%;
-    width: 20vh;
-    height: 4vh;
-    color: white;
-    border: none;
-    border-radius: 2rem;
-    cursor: pointer;
+  margin-top: 1%;
+  width: 20vh;
+  height: 4vh;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
 }
 
 button:active {
-    transform: translateY(2px);
+  transform: translateY(2px);
 }
 
 button:hover {
-    filter: brightness(85%);
+  filter: brightness(85%);
 }
 
 /*
-Styles using ids of the newQuiz.html page
-*/
+  Styles using ids of the newQuiz.html page
+  */
 #content {
-    height: 100vh;
-    margin: auto;
-    max-width: 75%;
-    text-align: center;
+  height: 100vh;
+  margin: auto;
+  max-width: 75%;
+  text-align: center;
 }
 
 #previewOptions li {
-    list-style: decimal;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 70%;
-    margin: 0.2em auto;
-    background-color: #d8d8d8;
-    border-radius: 0.3em;
-    padding: 0.3em;
-    font-size: medium;
+  list-style: decimal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0.2em auto;
+  background-color: #d8d8d8;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  font-size: medium;
 }
 
 #previewOptions button {
-    margin: 0;
-    color: black;
+  margin: 0;
+  color: black;
 }
 
 /*
-Styles using classes of the newQuiz.html page
-*/
+  Styles using classes of the newQuiz.html page
+  */
 .pageParts {
-    padding: 2%;
+  padding: 2%;
 }

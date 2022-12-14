@@ -69,7 +69,7 @@
   width: 100%;
   border-radius: 1rem;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #contactPart .submitBtn {
   width: 60%;
@@ -140,4 +140,4 @@
   #contactPart #content textarea {
     width: 100%;
   }
-}/*# sourceMappingURL=contact.css.map */
+}

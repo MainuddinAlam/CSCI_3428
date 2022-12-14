@@ -1,159 +1,177 @@
+/** 
+    Purpose: The purpose of this scss file is to provide the styles for the
+    Contact Us page for the French Village website.
+
+    Author: Joshua Kivaria (A00450062). Joshua Kivaria added the styles 
+    for header and contact parts of the Contact Us Page of the French
+    village website.
+    Author: Mainuddin Alam Irteja (A00446752). Mainuddin Alam Irteja added the
+    necessary parts to so that a "Thank you" message appears when sending
+    a message.
+ **/
+
+// Styles for the header section of the Contact Us page
 #header {
-    width: 100%;
-    min-height: 60vh;
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        h1 {
-            text-align: center;
-            font-size: 6vw;
-            text-transform: uppercase;
-            padding-bottom: 0.5em;
-        }
-        p {
-            padding: 1em;
-        }
-    }
-}
-
-#contactPart {
-    align-items: center;
-    justify-content: center;
-    padding: 1em;
-    margin: 1em 15vw;
-    display: grid;
-    grid-template-columns: auto auto;
-    border-radius: 1rem;
-    .content {
-        padding: 1em;
-        width: 100%;
-        font-size: large;
-        margin-right: 3vw;
-        h2 {
-            padding: 1em;
-            font-size: xx-large;
-            text-align: center;
-        }
-
-        input {
-            width: 30vw;
-            height: 5vh;
-            margin-bottom: 1vh;
-            padding: 0.5em;
-            border-radius: 0.5rem;
-            border: solid 2px black;
-
-            &:focus {
-                border-color: var(--primary-color);
-                outline: var(--primary-color);
-            }
-        }
-
-        textarea {
-            width: 30vw;
-            height: 30vh;
-            border-radius: 0.5rem;
-            padding: 0.5em;
-            border: solid 2px black;
-            &:focus {
-                border-color: var(--primary-color);
-                outline: var(--primary-color);
-            }
-        }
-    }
-
-    img {
-        width: 100%;
-        border-radius: 1rem;
-        object-fit: cover;
-    }
-
-    .submitBtn {
-        width: 60%;
-        padding: 1%;
-        cursor: pointer;
-        border: none !important;
-        background-color: #218838;
-        color: white;
-        &:hover {
-            background-color: #0069d9;
-        }
-        &:active {
-            transform: translateY(2px);
-        }
-    }
-}
-
-#responsePart {
-    padding-top: 10vh;
-    min-height: fit-content;
     h1 {
-        margin-top: auto;
+      text-align: center;
+      font-size: 6vw;
+      text-transform: uppercase;
+      padding-bottom: 0.5em;
     }
-
-    button {
-        cursor: pointer;
-        border: none;
-        background-color: #218838;
-        color: white;
-        margin: 5vh;
-        border-radius: 2em;
-        padding: 1em;
-        &:hover {
-            background-color: #0069d9;
-        }
-        &:active {
-            transform: translateY(2px);
-        }
+    p {
+      padding: 1em;
     }
+  }
 }
 
-.info {
-    text-align: center;
+//Styles for the contact part of the page
+#contactPart {
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  margin: 1em 15vw;
+  display: grid;
+  grid-template-columns: auto auto;
+  border-radius: 1rem;
+  .content {
+    padding: 1em;
+    width: 100%;
     font-size: large;
+    margin-right: 3vw;
+    h2 {
+      padding: 1em;
+      font-size: xx-large;
+      text-align: center;
+    }
+
+    input {
+      width: 30vw;
+      height: 5vh;
+      margin-bottom: 1vh;
+      padding: 0.5em;
+      border-radius: 0.5rem;
+      border: solid 2px black;
+
+      &:focus {
+        border-color: var(--primary-color);
+        outline: var(--primary-color);
+      }
+    }
+
+    textarea {
+      width: 30vw;
+      height: 30vh;
+      border-radius: 0.5rem;
+      padding: 0.5em;
+      border: solid 2px black;
+      &:focus {
+        border-color: var(--primary-color);
+        outline: var(--primary-color);
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  .submitBtn {
+    width: 60%;
+    padding: 1%;
+    cursor: pointer;
+    border: none !important;
+    background-color: #218838;
+    color: white;
+    &:hover {
+      background-color: #0069d9;
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+  }
 }
 
-// tablet size responsiveness
+//Styles for the response part of the page
+#responsePart {
+  padding-top: 10vh;
+  min-height: fit-content;
+  h1 {
+    margin-top: auto;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background-color: #218838;
+    color: white;
+    margin: 5vh;
+    border-radius: 2em;
+    padding: 1em;
+    &:hover {
+      background-color: #0069d9;
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}
+
+// Styles for the Location and Social Media names
+.info {
+  text-align: center;
+  font-size: large;
+}
+
+/* Styles for tablets and smartphones */
+
+//Styles to make the tablet size responsive
 @media only screen and (max-width: 768px) {
-    #header {
-        min-height: 40vh;
-        div {
-            h1 {
-                font-size: 8vw;
-            }
-        }
+  #header {
+    min-height: 40vh;
+    div {
+      h1 {
+        font-size: 8vw;
+      }
     }
-    #contactPart {
-        grid-template-columns: auto;
-        margin: 1em;
+  }
+  #contactPart {
+    grid-template-columns: auto;
+    margin: 1em;
 
-        #content {
-            padding: 1em 0;
-            margin: 0;
+    #content {
+      padding: 1em 0;
+      margin: 0;
 
-            h2 {
-                padding: 0;
-            }
+      h2 {
+        padding: 0;
+      }
 
-            input {
-                width: 100%;
-            }
+      input {
+        width: 100%;
+      }
 
-            textarea {
-                width: 100%;
-            }
-        }
+      textarea {
+        width: 100%;
+      }
     }
+  }
 }
 
-// smartphone size responsiveness
+//Styles to make the smartphone size responsive
 @media only screen and (max-width: 640px) {
 }

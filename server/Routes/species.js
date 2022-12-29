@@ -166,7 +166,7 @@ router.post("/getSpecies/:category/:index", async (req, res) => {
  * This express function calls an anonymous callback function once the GET
  * request gets recognized.
  *
- * :speciesId _id of a specie
+ * :speciesId _id of a specific specie
  *
  * @param "/speciesFullInfo/:speciesId" is the relative url destination to be recognized
  * @param anonymous callback function gets executed once the GET request

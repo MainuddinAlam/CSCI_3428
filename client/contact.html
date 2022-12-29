@@ -1,9 +1,13 @@
 <!-- 
-    Define the markup of the contact page for the French Village website
+    Purpose: The purpose of this html file is to define the markup of the 
+    Contact Us page for the French Village website
 
-    Author: Joshua
-    Author: Mainuddin Alam Irteja (A00446752)
- -->
+    Author: Joshua Kivaria (A00450062). Joshua Kivaria wrote most of 
+    the html code for making the Contact Us page.
+    Author: Mainuddin Alam Irteja (A00446752). Mainuddin Alam Irteja wrote
+    markup so that the displays change to show a "THANK YOU" message when
+    user sends the message.
+  -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +72,7 @@
             </ul>
         </nav>
         <main id="main_content">
+            <!--Description of the Contact Page-->
             <header id="header">
                 <div id="headerContent">
                     <h1>CONTACT US</h1>
@@ -77,11 +82,15 @@
                     </p>
                 </div>
             </header>
+            <!--The portion of the page which contains details on how to contact 
+          French village-->
             <section id="contactPart">
                 <span class="content" id="content">
                     <h2>SEND US A MESSAGE</h2>
                     <br />
+                    <!--Contact form to submit messages to French village-->
                     <form id="formContact">
+                        <!--Input field to insert user's first name-->
                         <ul>
                             <label for="firstName">First Name</label>
                             <div class>
@@ -93,7 +102,7 @@
                                 />
                             </div>
                         </ul>
-
+                        <!--Input field to insert user's last name-->
                         <ul>
                             <label for="lastName">Last Name</label>
                             <div>
@@ -105,6 +114,7 @@
                                 />
                             </div>
                         </ul>
+                        <!--Input field to insert user's email-->
                         <ul>
                             <label for="emailAddress">Email Address</label>
                             <div>
@@ -116,6 +126,7 @@
                                 />
                             </div>
                         </ul>
+                        <!--Input field to insert the subject matter for the email-->
                         <ul>
                             <label for="subject">Subject</label>
                             <div>
@@ -127,6 +138,7 @@
                                 />
                             </div>
                         </ul>
+                        <!--Input field to insert user's message for French village-->
                         <ul>
                             <label for="message">Message</label>
                             <div>
@@ -137,6 +149,7 @@
                                 ></textarea>
                             </div>
                         </ul>
+                        <!--Button to submit the contact form-->
                         <input
                             type="submit"
                             id="submitForm"
@@ -146,10 +159,12 @@
                         />
                     </form>
                 </span>
+                <!--Image of rewilding area of French village-->
                 <span>
                     <img src="./assets/rewilding.jpg" />
                     <br />
                     <br />
+                    <!--Location of French village-->
                     <div id="location" class="info">
                         <h3>Address</h3>
                         <a href="https://www.google.ca/maps" target="_blank">
@@ -158,6 +173,7 @@
                         </a>
                     </div>
                     <br />
+                    <!--Social Medias of French village-->
                     <div id="social" class="info">
                         <h3>Connect with us</h3>
                         <p>phone: 802 123 4568</p>
@@ -181,9 +197,8 @@
                     </div>
                 </span>
             </section>
-
+            <!--Section with the "THANK YOU" message for the users -->
             <section style="display: none" id="responsePart">
-                <header id="header"></header>
                 <div id="headerContent"></div>
                 <h1>THANK YOU</h1>
 

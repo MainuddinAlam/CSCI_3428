@@ -1,3 +1,10 @@
+/*
+    Purpose: The purpose of this scss file is to provide the styles for quiz page
+    for the French Village website.
+
+    Author: Mainuddin Alam Irteja (A00446752). Mainuddin Alam Irteja
+    has worked on making the necessay styles for the quiz page.
+ */
 #header {
   width: 100%;
   min-height: 60vh;
@@ -29,6 +36,7 @@
   transform: translateZ(1%);
 }
 #quizPart #content fieldset {
+  /* set the border to 3px. */
   padding: 1.5em;
   border-radius: 0.5rem;
   margin: 2em 0;

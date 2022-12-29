@@ -1,3 +1,12 @@
+/*
+    Purpose: The purpose of this scss file is to provide the styles for quiz page
+    for the French Village website.
+
+    Author: Mainuddin Alam Irteja (A00446752). Mainuddin Alam Irteja
+    has worked on making the necessay styles for the quiz page.
+ */
+
+//Styles for the header of the quiz page
 #header {
     width: 100%;
     min-height: 60vh;
@@ -24,11 +33,13 @@
     }
 }
 
+//Styles for the quiz part of the page
 #quizPart {
     padding: 1em 15vw;
     #content {
         transform: translateZ(1%);
         fieldset {
+            /* set the border to 3px. */
             $border: 3px;
             padding: 1.5em;
             border-radius: 0.5rem;
@@ -51,7 +62,8 @@
                 background: linear-gradient(45deg, #80ff80, #00a400);
             }
         }
-
+        // Animation for the "Saved" message to appear. The message will be
+        //shown when user clicks an option of a question.
         legend {
             font-weight: bold;
             float: left;
@@ -91,6 +103,7 @@
         background-color: var(--primary-color);
     }
 
+    //Styles for the modal
     #modal {
         background-color: var(--bg-color);
         margin: auto;
@@ -118,6 +131,7 @@
     }
 }
 
+//Styles for the results part of the page
 #results {
     width: 100%;
     height: 100vh;
@@ -143,7 +157,9 @@
     }
 }
 
-// tablet size responsiveness
+//The following styles are for tablets and smartphones
+
+//Styles for making tablet size responsive
 @media only screen and (max-width: 768px) {
     #header {
         min-height: 40vh;
@@ -158,7 +174,7 @@
     }
 }
 
-// smartphone size responsiveness
+//Styles for making the smartphone size responsive
 @media only screen and (max-width: 640px) {
     #results {
         #marks {

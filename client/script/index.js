@@ -17,9 +17,9 @@
  */
 
 // constants
-// amount of time each descriptions and images will be displayed
+// global amount of time each descriptions and images will be displayed
 const HEADER_PRESENCE_TIME = 5;
-// programatically get the amount of descriptions / images in the header
+// global programatically get the amount of descriptions / images in the header
 const numHeaderDesc = document.querySelectorAll(
     "header #img_container img"
 ).length;
